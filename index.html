@@ -1,0 +1,2770 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mochi Space 5D 🌸</title> 
+<link rel="icon" type="image/png" href="logo.png"> 
+<style>
+/* ============ RESET & BASE ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{
+  font-family:"Segoe UI","Quicksand","Nunito",system-ui,-apple-system,sans-serif;
+  color:var(--text);background:var(--bg1);
+  font-size:14px;line-height:1.4;
+  transition:background .5s,color .3s;
+}
+button{font-family:inherit;color:inherit;cursor:pointer;border:none;background:none}
+input,select,textarea{font-family:inherit;color:inherit}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:10px;border:2px solid var(--panel-solid)}
+::-webkit-scrollbar-thumb:hover{background:var(--accent-2)}
+
+/* ============ 20 THEMES ============ */
+[data-theme="pink-mochi"]{
+  --bg1:#ffe0ef;--bg2:#ffc4dd;--bg3:#ffd6f0;
+  --panel:rgba(255,255,255,.82);--panel-solid:#fff5fa;--panel-2:rgba(255,240,248,.7);
+  --text:#6b3a52;--text-dim:#a8788d;
+  --accent:#ff7bb0;--accent-2:#ffb3d1;--accent-text:#fff;
+  --win-bg:#fffafd;--win-title:linear-gradient(135deg,#ffb3d1,#ff7bb0);
+  --win-title-text:#fff;--win-border:#ff9bc5;--glow:rgba(255,123,176,.55);
+  --shadow:0 12px 32px rgba(255,123,176,.28);
+  --pattern:radial-gradient(circle at 20% 30%,rgba(255,255,255,.7),transparent 40%),radial-gradient(circle at 80% 70%,rgba(255,255,255,.5),transparent 40%);
+  --deco:♥;
+}
+[data-theme="sakura"]{
+  --bg1:#ffeaf1;--bg2:#ffd0e0;--bg3:#fff0f5;
+  --panel:rgba(255,252,254,.85);--panel-solid:#fffafc;--panel-2:rgba(255,240,247,.75);
+  --text:#7a3a55;--text-dim:#b08998;
+  --accent:#ff8ab8;--accent-2:#ffc8de;--accent-text:#fff;
+  --win-bg:#fffdfe;--win-title:linear-gradient(135deg,#ffd0e5,#ff9cc1);
+  --win-title-text:#7a3a55;--win-border:#ffb7d4;--glow:rgba(255,138,184,.5);
+  --shadow:0 10px 28px rgba(255,155,197,.25);
+  --pattern:radial-gradient(ellipse at top left,rgba(255,220,235,.9),transparent 55%),radial-gradient(ellipse at bottom right,rgba(255,200,225,.7),transparent 55%);
+  --deco:❀;
+}
+[data-theme="bunny"]{
+  --bg1:#f4f0ff;--bg2:#e0d8f5;--bg3:#ede6ff;
+  --panel:rgba(255,255,255,.88);--panel-solid:#fbf8ff;--panel-2:rgba(245,240,255,.75);
+  --text:#4a3a6b;--text-dim:#8a7aa8;
+  --accent:#b39bff;--accent-2:#d8cbff;--accent-text:#fff;
+  --win-bg:#fefcff;--win-title:linear-gradient(135deg,#e0d8ff,#b39bff);
+  --win-title-text:#fff;--win-border:#cdbaff;--glow:rgba(179,155,255,.55);
+  --shadow:0 12px 30px rgba(160,140,230,.28);
+  --pattern:radial-gradient(circle at 15% 20%,rgba(255,255,255,.9),transparent 40%),radial-gradient(circle at 85% 80%,rgba(230,220,255,.8),transparent 45%);
+  --deco:🐰;
+}
+[data-theme="kitty"]{
+  --bg1:#fdf0e2;--bg2:#f3d5b8;--bg3:#fbe6d2;
+  --panel:rgba(255,252,246,.88);--panel-solid:#fffaf2;--panel-2:rgba(255,245,232,.75);
+  --text:#6b4a2e;--text-dim:#a88465;
+  --accent:#d99a5c;--accent-2:#f2c99b;--accent-text:#fff;
+  --win-bg:#fffdf9;--win-title:linear-gradient(135deg,#f4d2a8,#d99a5c);
+  --win-title-text:#fff;--win-border:#e8b98a;--glow:rgba(217,154,92,.5);
+  --shadow:0 12px 30px rgba(200,150,100,.25);
+  --pattern:radial-gradient(circle at 25% 25%,rgba(255,245,230,.9),transparent 40%),radial-gradient(circle at 75% 75%,rgba(245,220,190,.8),transparent 45%);
+  --deco:🐱;
+}
+[data-theme="cloud"]{
+  --bg1:#e3f2ff;--bg2:#bfe0ff;--bg3:#dcf0ff;
+  --panel:rgba(255,255,255,.9);--panel-solid:#f6fbff;--panel-2:rgba(235,247,255,.75);
+  --text:#2f5480;--text-dim:#7a9bc0;
+  --accent:#6fb4ff;--accent-2:#b8dcff;--accent-text:#fff;
+  --win-bg:#fdfeff;--win-title:linear-gradient(135deg,#c6e1ff,#6fb4ff);
+  --win-title-text:#fff;--win-border:#a8cff5;--glow:rgba(111,180,255,.5);
+  --shadow:0 12px 30px rgba(120,180,240,.25);
+  --pattern:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.95),transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(220,240,255,.9),transparent 50%);
+  --deco:☁;
+}
+[data-theme="strawberry"]{
+  --bg1:#ffe9ef;--bg2:#ffc8d5;--bg3:#fff0f3;
+  --panel:rgba(255,252,250,.88);--panel-solid:#fff8f6;--panel-2:rgba(255,240,238,.75);
+  --text:#8a3a4a;--text-dim:#c08090;
+  --accent:#ff6b8a;--accent-2:#ffb8c8;--accent-text:#fff;
+  --win-bg:#fffdfd;--win-title:linear-gradient(135deg,#ffb8c8,#ff6b8a);
+  --win-title-text:#fff;--win-border:#ffa8bc;--glow:rgba(255,107,138,.5);
+  --shadow:0 12px 30px rgba(255,140,160,.28);
+  --pattern:radial-gradient(circle at 20% 20%,rgba(255,255,255,.85),transparent 40%),radial-gradient(circle at 80% 80%,rgba(255,220,230,.7),transparent 45%);
+  --deco:🍓;
+}
+[data-theme="angel"]{
+  --bg1:#fffbe8;--bg2:#ffefc4;--bg3:#fff8e0;
+  --panel:rgba(255,255,251,.9);--panel-solid:#fffdf5;--panel-2:rgba(255,250,235,.78);
+  --text:#7a6030;--text-dim:#b89c68;
+  --accent:#ffc93a;--accent-2:#ffe28a;--accent-text:#7a6030;
+  --win-bg:#fffefa;--win-title:linear-gradient(135deg,#ffe9a0,#ffc93a);
+  --win-title-text:#7a6030;--win-border:#ffe1a0;--glow:rgba(255,201,58,.55);
+  --shadow:0 12px 32px rgba(255,200,100,.3);
+  --pattern:radial-gradient(ellipse at 50% 10%,rgba(255,255,255,.95),transparent 55%),radial-gradient(circle at 80% 90%,rgba(255,240,200,.8),transparent 45%);
+  --deco:✦;
+}
+[data-theme="fairy"]{
+  --bg1:#e8ffe9;--bg2:#c4f0c8;--bg3:#e0fbe4;
+  --panel:rgba(255,255,252,.88);--panel-solid:#f8fff9;--panel-2:rgba(235,255,238,.75);
+  --text:#2f5a38;--text-dim:#78a880;
+  --accent:#59c97a;--accent-2:#a8e8b8;--accent-text:#fff;
+  --win-bg:#fdfefd;--win-title:linear-gradient(135deg,#b8e8c4,#59c97a);
+  --win-title-text:#fff;--win-border:#a8dbb4;--glow:rgba(89,201,122,.5);
+  --shadow:0 12px 30px rgba(120,200,140,.25);
+  --pattern:radial-gradient(circle at 25% 30%,rgba(255,255,255,.9),transparent 45%),radial-gradient(circle at 75% 70%,rgba(210,245,215,.8),transparent 45%);
+  --deco:🦋;
+}
+[data-theme="academy"]{
+  --bg1:#2a1a4a;--bg2:#1a0f30;--bg3:#3a2a5a;
+  --panel:rgba(50,35,80,.85);--panel-solid:#2a1f48;--panel-2:rgba(60,45,90,.7);
+  --text:#e8d8ff;--text-dim:#a898c8;
+  --accent:#c490ff;--accent-2:#e0b8ff;--accent-text:#1a0f30;
+  --win-bg:#2a1f48;--win-title:linear-gradient(135deg,#4a3a7a,#c490ff);
+  --win-title-text:#fff;--win-border:#8a6ac8;--glow:rgba(196,144,255,.7);
+  --shadow:0 12px 32px rgba(196,144,255,.35);
+  --pattern:radial-gradient(circle at 20% 20%,rgba(196,144,255,.25),transparent 45%),radial-gradient(circle at 80% 80%,rgba(140,100,220,.2),transparent 45%);
+  --deco:✩;
+}
+[data-theme="galaxy"]{
+  --bg1:#1a0a2e;--bg2:#0a0418;--bg3:#2a1050;
+  --panel:rgba(30,18,55,.85);--panel-solid:#1a1030;--panel-2:rgba(50,30,90,.7);
+  --text:#f0e0ff;--text-dim:#a898c8;
+  --accent:#ff7ad9;--accent-2:#b8a0ff;--accent-text:#0a0418;
+  --win-bg:#1e1240;--win-title:linear-gradient(135deg,#4a2070,#ff7ad9);
+  --win-title-text:#fff;--win-border:#c090ff;--glow:rgba(255,122,217,.7);
+  --shadow:0 12px 40px rgba(255,122,217,.4);
+  --pattern:radial-gradient(circle at 20% 30%,rgba(255,122,217,.3),transparent 45%),radial-gradient(circle at 80% 70%,rgba(120,100,255,.25),transparent 50%);
+  --deco:★;
+}
+[data-theme="mermaid"]{
+  --bg1:#d8f5ff;--bg2:#a8e0f5;--bg3:#c8ecff;
+  --panel:rgba(255,255,255,.88);--panel-solid:#f0fbff;--panel-2:rgba(230,248,255,.75);
+  --text:#1a5a70;--text-dim:#70a0b8;
+  --accent:#2ab8d8;--accent-2:#88dcf0;--accent-text:#fff;
+  --win-bg:#fbffff;--win-title:linear-gradient(135deg,#9ce0f5,#2ab8d8);
+  --win-title-text:#fff;--win-border:#88cce8;--glow:rgba(42,184,216,.5);
+  --shadow:0 12px 30px rgba(100,200,230,.28);
+  --pattern:radial-gradient(circle at 25% 30%,rgba(255,255,255,.9),transparent 45%),radial-gradient(circle at 75% 70%,rgba(200,240,255,.8),transparent 45%);
+  --deco:🐚;
+}
+[data-theme="candy"]{
+  --bg1:#ffd9f0;--bg2:#d0e5ff;--bg3:#fff0c8;
+  --panel:rgba(255,255,255,.85);--panel-solid:#fffafc;--panel-2:rgba(255,245,252,.75);
+  --text:#6a3060;--text-dim:#a888b0;
+  --accent:#ff6ab8;--accent-2:#7ec8ff;--accent-text:#fff;
+  --win-bg:#fffefd;--win-title:linear-gradient(90deg,#ff9ad0,#c0a8ff,#7ec8ff);
+  --win-title-text:#fff;--win-border:#f0b8e0;--glow:rgba(255,106,184,.5);
+  --shadow:0 12px 30px rgba(230,150,220,.3);
+  --pattern:radial-gradient(circle at 15% 25%,rgba(255,200,240,.7),transparent 40%),radial-gradient(circle at 85% 75%,rgba(190,220,255,.7),transparent 40%);
+  --deco:🍬;
+}
+[data-theme="rainbow"]{
+  --bg1:#ffeedd;--bg2:#e0f0ff;--bg3:#f0e0ff;
+  --panel:rgba(255,255,255,.85);--panel-solid:#fffaf0;--panel-2:rgba(255,250,240,.75);
+  --text:#5a3a6a;--text-dim:#9888a8;
+  --accent:#ff8ab0;--accent-2:#8ac0ff;--accent-text:#fff;
+  --win-bg:#fffefc;--win-title:linear-gradient(90deg,#ffb0b0,#ffd9a0,#c8ffb0,#a0d9ff,#d9a0ff);
+  --win-title-text:#5a3a6a;--win-border:#e8c8e8;--glow:rgba(200,150,220,.5);
+  --shadow:0 12px 30px rgba(200,160,220,.28);
+  --pattern:radial-gradient(circle at 20% 20%,rgba(255,220,220,.7),transparent 40%),radial-gradient(circle at 80% 80%,rgba(200,220,255,.7),transparent 40%);
+  --deco:🌈;
+}
+[data-theme="lavender"]{
+  --bg1:#2a1f4a;--bg2:#1a0f30;--bg3:#3a2a5a;
+  --panel:rgba(45,35,75,.88);--panel-solid:#241a40;--panel-2:rgba(60,45,95,.72);
+  --text:#e8dcff;--text-dim:#a898c8;
+  --accent:#b8a0ff;--accent-2:#d8c8ff;--accent-text:#1a0f30;
+  --win-bg:#2a2050;--win-title:linear-gradient(135deg,#4a3a70,#b8a0ff);
+  --win-title-text:#fff;--win-border:#9080c8;--glow:rgba(184,160,255,.7);
+  --shadow:0 12px 35px rgba(184,160,255,.32);
+  --pattern:radial-gradient(circle at 70% 25%,rgba(255,255,220,.6),transparent 25%),radial-gradient(circle at 20% 80%,rgba(184,160,255,.25),transparent 45%);
+  --deco:☾;
+}
+[data-theme="mint"]{
+  --bg1:#e0fff5;--bg2:#a8f0dc;--bg3:#d0fbe8;
+  --panel:rgba(255,255,252,.85);--panel-solid:#f5fffb;--panel-2:rgba(230,255,245,.75);
+  --text:#1a6a5a;--text-dim:#78a898;
+  --accent:#3ad4a8;--accent-2:#9ce8cc;--accent-text:#fff;
+  --win-bg:#fcfffd;--win-title:linear-gradient(135deg,#9ce8cc,#3ad4a8);
+  --win-title-text:#fff;--win-border:#9ce0c8;--glow:rgba(58,212,168,.5);
+  --shadow:0 12px 30px rgba(120,220,190,.28);
+  --pattern:radial-gradient(circle at 20% 30%,rgba(255,255,255,.9),transparent 40%),radial-gradient(circle at 80% 70%,rgba(210,250,235,.8),transparent 45%);
+  --deco:🍃;
+}
+[data-theme="peach"]{
+  --bg1:#ffeede;--bg2:#ffd4b8;--bg3:#fff0e4;
+  --panel:rgba(255,252,248,.88);--panel-solid:#fffaf5;--panel-2:rgba(255,245,235,.75);
+  --text:#8a4a30;--text-dim:#c08870;
+  --accent:#ffa070;--accent-2:#ffcba8;--accent-text:#fff;
+  --win-bg:#fffefd;--win-title:linear-gradient(135deg,#ffd0b0,#ffa070);
+  --win-title-text:#fff;--win-border:#ffbca0;--glow:rgba(255,160,112,.5);
+  --shadow:0 12px 30px rgba(255,180,140,.28);
+  --pattern:radial-gradient(circle at 30% 25%,rgba(255,250,240,.9),transparent 45%),radial-gradient(circle at 70% 75%,rgba(255,230,210,.8),transparent 45%);
+  --deco:🍑;
+}
+[data-theme="snow"]{
+  --bg1:#f0f8ff;--bg2:#d8e8f5;--bg3:#eaf4ff;
+  --panel:rgba(255,255,255,.92);--panel-solid:#fbfdff;--panel-2:rgba(240,250,255,.78);
+  --text:#2a4a6a;--text-dim:#7a9ab8;
+  --accent:#6ab8e8;--accent-2:#b8e0f5;--accent-text:#fff;
+  --win-bg:#feffff;--win-title:linear-gradient(135deg,#c8e5f5,#6ab8e8);
+  --win-title-text:#fff;--win-border:#b0d8ec;--glow:rgba(106,184,232,.5);
+  --shadow:0 12px 30px rgba(120,180,220,.25);
+  --pattern:radial-gradient(circle at 25% 25%,rgba(255,255,255,.95),transparent 40%),radial-gradient(circle at 75% 75%,rgba(220,240,255,.9),transparent 45%);
+  --deco:❄;
+}
+[data-theme="cyber"]{
+  --bg1:#0a0a1a;--bg2:#050510;--bg3:#1a0a2a;
+  --panel:rgba(20,15,40,.88);--panel-solid:#0f0a20;--panel-2:rgba(35,25,60,.72);
+  --text:#e0f0ff;--text-dim:#80a0c8;
+  --accent:#00f0ff;--accent-2:#ff40c0;--accent-text:#0a0a1a;
+  --win-bg:#12102a;--win-title:linear-gradient(135deg,#1a1040,#00f0ff);
+  --win-title-text:#00f0ff;--win-border:#00f0ff;--glow:rgba(0,240,255,.7);
+  --shadow:0 0 30px rgba(0,240,255,.4),0 0 60px rgba(255,64,192,.2);
+  --pattern:radial-gradient(circle at 20% 20%,rgba(0,240,255,.15),transparent 40%),radial-gradient(circle at 80% 80%,rgba(255,64,192,.15),transparent 40%);
+  --deco:⚡;
+}
+[data-theme="aquarium"]{
+  --bg1:#0a1a3a;--bg2:#051028;--bg3:#102a50;
+  --panel:rgba(15,30,60,.88);--panel-solid:#0a1a35;--panel-2:rgba(25,45,85,.72);
+  --text:#c8e8ff;--text-dim:#6890b8;
+  --accent:#40d0ff;--accent-2:#a0e8ff;--accent-text:#051028;
+  --win-bg:#0f2040;--win-title:linear-gradient(135deg,#1a3055,#40d0ff);
+  --win-title-text:#fff;--win-border:#3a90c0;--glow:rgba(64,208,255,.6);
+  --shadow:0 12px 35px rgba(64,208,255,.3);
+  --pattern:radial-gradient(circle at 20% 30%,rgba(64,208,255,.2),transparent 45%),radial-gradient(circle at 80% 70%,rgba(160,232,255,.15),transparent 50%);
+  --deco:🪼;
+}
+[data-theme="royal"]{
+  --bg1:#2a1050;--bg2:#1a0838;--bg3:#3a2060;
+  --panel:rgba(45,25,80,.88);--panel-solid:#22104a;--panel-2:rgba(60,35,100,.72);
+  --text:#f5e8ff;--text-dim:#b8a0d0;
+  --accent:#ffd070;--accent-2:#ffe8a8;--accent-text:#2a1050;
+  --win-bg:#25134f;--win-title:linear-gradient(135deg,#4a2870,#ffd070);
+  --win-title-text:#2a1050;--win-border:#c0a0e0;--glow:rgba(255,208,112,.55);
+  --shadow:0 12px 40px rgba(255,208,112,.3);
+  --pattern:radial-gradient(circle at 25% 25%,rgba(255,208,112,.2),transparent 40%),radial-gradient(circle at 75% 75%,rgba(192,160,224,.25),transparent 45%);
+  --deco:♛;
+}
+
+/* ============ BACKGROUND LAYERS ============ */
+#bg-deco{
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse at 20% 10%,var(--bg3),transparent 60%),
+    radial-gradient(ellipse at 80% 90%,var(--bg2),transparent 60%),
+    linear-gradient(135deg,var(--bg1),var(--bg2) 70%,var(--bg3));
+  transition:background .6s;
+}
+#bg-deco::after{
+  content:"";position:absolute;inset:0;
+  background:var(--pattern);opacity:.6;
+}
+#particles{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.8}
+
+/* ============ APP LAYOUT ============ */
+#app{position:relative;z-index:2;height:100vh;display:flex;gap:0;padding:10px}
+
+/* ============ SIDEBAR ============ */
+#sidebar{
+  width:250px;flex-shrink:0;display:flex;flex-direction:column;
+  background:var(--panel);backdrop-filter:blur(20px) saturate(160%);
+  border-radius:22px;padding:14px 10px;
+  box-shadow:0 10px 40px rgba(0,0,0,.15),inset 0 1px 0 rgba(255,255,255,.5);
+  border:1px solid rgba(255,255,255,.4);
+  transition:width .35s,margin .35s,opacity .3s;overflow:hidden;
+}
+#sidebar.collapsed{width:66px}
+#sidebar.collapsed .sb-label,#sidebar.collapsed .sb-section-title,#sidebar.collapsed .page-meta,#sidebar.collapsed .sb-badge{display:none}
+#sidebar.collapsed #logo-text{display:none}
+#sidebar.collapsed .logo-img { width: 40px; height: 40px; }
+.logo{display:flex;align-items:center;gap:10px;padding:6px 8px 12px;border-bottom:1px solid rgba(0,0,0,.08);margin-bottom:12px}
+.logo-img {
+  width: 56px; 
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 50%; /* Bo tròn ảnh */
+  object-fit: cover; /* Đảm bảo ảnh không bị méo */
+  filter: drop-shadow(0 4px 12px var(--glow)); /* Hiệu ứng phát sáng */
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.logo-img:hover {
+  transform: scale(1.1) rotate(5deg); /* Hiệu ứng rê chuột dễ thương */
+}
+#logo-text h1{font-size:16px;font-weight:800;letter-spacing:.3px;background:linear-gradient(135deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+#logo-text p{font-size:10px;color:var(--text-dim);font-weight:600;letter-spacing:.5px;white-space:nowrap}
+.sb-section-title{font-size:10px;font-weight:800;letter-spacing:1.2px;color:var(--text-dim);padding:10px 8px 6px;text-transform:uppercase}
+#pages-list{flex:1;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;gap:4px;padding:2px;min-height:0}
+.page-item{
+  display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:12px;
+  cursor:pointer;transition:.2s;position:relative;border:1px solid transparent;user-select:none;
+}
+.page-item:hover{background:rgba(255,255,255,.4);transform:translateX(2px)}
+.page-item.active{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:var(--accent-text);box-shadow:0 6px 16px var(--glow);border-color:rgba(255,255,255,.3)}
+.page-item.active .page-meta{color:rgba(255,255,255,.85)}
+.page-icon{font-size:18px;flex-shrink:0;width:22px;text-align:center}
+.page-meta{flex:1;min-width:0;overflow:hidden}
+.page-name{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.page-sub{font-size:10px;color:var(--text-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.page-item .page-actions{display:none;gap:2px}
+.page-item:hover .page-actions{display:flex}
+.page-item .page-actions button{width:22px;height:22px;border-radius:6px;display:grid;place-items:center;font-size:11px;background:rgba(255,255,255,.5)}
+.page-item .page-actions button:hover{background:rgba(255,255,255,.9);transform:scale(1.1)}
+.sb-bottom{padding-top:10px;border-top:1px solid rgba(0,0,0,.08);display:flex;flex-direction:column;gap:4px;flex-shrink:0}
+.sb-btn{
+  display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:11px;
+  font-size:12.5px;font-weight:700;transition:.2s;border:1px solid transparent;width:100%;text-align:left;
+}
+.sb-btn:hover{background:rgba(255,255,255,.5);transform:translateX(2px)}
+.sb-btn .sb-label{white-space:nowrap}
+.sb-btn svg{width:18px;height:18px;flex-shrink:0}
+.sb-badge{margin-left:auto;background:var(--accent);color:var(--accent-text);font-size:10px;padding:2px 6px;border-radius:8px;font-weight:800}
+#new-page-btn{margin-top:6px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:var(--accent-text);justify-content:center;box-shadow:0 6px 16px var(--glow);flex-shrink:0}
+#new-page-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px var(--glow)}
+
+/* ============ MAIN ============ */
+#main{flex:1;display:flex;flex-direction:column;min-width:0;position:relative}
+#toolbar{
+  display:flex;align-items:center;gap:8px;padding:10px 14px;
+  background:var(--panel);backdrop-filter:blur(20px) saturate(160%);
+  border-radius:22px;margin-bottom:10px;
+  box-shadow:0 10px 40px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.5);
+  border:1px solid rgba(255,255,255,.4);flex-wrap:wrap;min-height:60px;flex-shrink:0;
+}
+#page-title-area{display:flex;align-items:center;gap:10px;flex:1;min-width:150px}
+#page-title-area .picon{font-size:22px}
+#page-title-area h2{font-size:16px;font-weight:800;letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#page-title-area .pstat{font-size:11px;color:var(--text-dim);font-weight:700}
+.tb-btn{
+  display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:11px;
+  font-size:12px;font-weight:800;transition:.2s;white-space:nowrap;
+  background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.6);
+  box-shadow:0 3px 0 rgba(0,0,0,.06),0 4px 10px rgba(0,0,0,.05);
+}
+.tb-btn:hover{transform:translateY(-2px);box-shadow:0 5px 0 rgba(0,0,0,.06),0 8px 18px var(--glow);background:rgba(255,255,255,.85)}
+.tb-btn:active{transform:translateY(0);box-shadow:0 1px 0 rgba(0,0,0,.06)}
+.tb-btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:var(--accent-text);border-color:rgba(255,255,255,.4);box-shadow:0 4px 0 rgba(0,0,0,.12),0 6px 20px var(--glow)}
+.tb-btn.primary:hover{box-shadow:0 6px 0 rgba(0,0,0,.12),0 10px 26px var(--glow)}
+.tb-btn svg{width:16px;height:16px;flex-shrink:0}
+.tb-btn .tb-label{display:inline}
+@media(max-width:1100px){.tb-btn .tb-label{display:none}.tb-btn{padding:8px}}
+
+/* ============ WORKSPACE (INFINITE CANVAS) ============ */
+#workspace-wrap{
+  flex:1;position:relative;border-radius:24px;overflow:auto;
+  background:var(--panel-2);backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,.4);
+  box-shadow:inset 0 2px 20px rgba(0,0,0,.06),0 10px 40px rgba(0,0,0,.1);
+}
+#workspace{
+  position:relative;width:3000px;height:3000px;overflow:hidden;
+  background-image:
+    linear-gradient(rgba(255,255,255,.15) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.15) 1px,transparent 1px);
+  background-size:40px 40px;
+}
+.empty-state{
+  position:fixed;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:16px;padding:40px;text-align:center;pointer-events:none;
+  z-index:10;
+}
+.empty-state svg{width:120px;height:120px;opacity:.5;filter:drop-shadow(0 10px 20px var(--glow));animation:float 4s ease-in-out infinite}
+.empty-state h3{font-size:20px;font-weight:800;color:var(--text)}
+.empty-state p{font-size:13px;color:var(--text-dim);max-width:340px;font-weight:600}
+.empty-state .hint{font-size:11px;color:var(--text-dim);opacity:.8;margin-top:8px}
+
+/* ============ WINDOWS BASE ============ */
+.win{
+  position:absolute;display:flex;flex-direction:column;
+  background:var(--win-bg);border-radius:16px;
+  box-shadow:var(--shadow);overflow:visible;
+  transition:box-shadow .2s,transform .2s;
+  min-width:220px;min-height:130px;
+  --win-r:16px;
+}
+.win::before,.win::after{pointer-events:none}
+.win-inner{
+  flex:1;display:flex;flex-direction:column;overflow:hidden;
+  border-radius:var(--win-r);background:var(--win-bg);
+  border:2px solid var(--win-border);position:relative;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4);
+}
+.win.focused{box-shadow:0 0 0 2px var(--accent),var(--shadow),0 0 30px var(--glow)}
+.win.minimized .win-body,.win.minimized .win-tb-sub{display:none}
+.win.minimized{min-height:auto!important;height:auto!important}
+.win.maximized{left:12px!important;top:12px!important;width:calc(100% - 24px)!important;height:calc(100% - 24px)!important}
+.win-titlebar{
+  display:flex;align-items:center;gap:6px;padding:8px 10px;
+  background:var(--win-title);color:var(--win-title-text);
+  border-radius:calc(var(--win-r) - 2px) calc(var(--win-r) - 2px) 0 0;
+  cursor:move;user-select:none;flex-shrink:0;min-height:36px;
+  position:relative;
+}
+.win-titlebar::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.25),transparent 50%);border-radius:inherit;pointer-events:none}
+.win-tb-sub{font-size:9.5px;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600;max-width:100%}
+.win-title{font-size:12.5px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;position:relative;z-index:1}
+.win-favicon{font-size:13px;flex-shrink:0;position:relative;z-index:1}
+.win-actions{display:flex;gap:3px;position:relative;z-index:1}
+.win-actions button{
+  width:22px;height:22px;border-radius:6px;display:grid;place-items:center;
+  font-size:11px;color:inherit;background:rgba(255,255,255,.22);transition:.15s;
+}
+.win-actions button:hover{background:rgba(255,255,255,.45);transform:scale(1.12)}
+.win-actions button.close:hover{background:#ff5a7a;color:#fff}
+.win-body{flex:1;overflow:hidden;position:relative;background:var(--win-bg);border-radius:0 0 calc(var(--win-r) - 2px) calc(var(--win-r) - 2px)}
+.win-body iframe{width:100%;height:100%;border:0;display:block;background:#fff}
+.win-tb-bottom{display:flex;gap:2px;padding:3px 6px;font-size:9px;color:var(--text-dim);background:rgba(0,0,0,.03);border-top:1px solid rgba(0,0,0,.04);align-items:center;flex-shrink:0}
+.win-tb-bottom .url-text{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:monospace;font-size:9.5px;padding:0 4px}
+.win-tb-bottom button{padding:2px 6px;border-radius:5px;font-size:9px;font-weight:700;background:rgba(255,255,255,.5);border:1px solid rgba(0,0,0,.06)}
+.win-tb-bottom button:hover{background:var(--accent);color:var(--accent-text)}
+.win-placeholder{padding:24px;text-align:center;color:var(--text-dim);font-size:12px;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;height:100%;background:linear-gradient(135deg,var(--win-bg),var(--panel-2))}
+.win-placeholder .big-emoji{font-size:38px;animation:float 3s ease-in-out infinite}
+.win-placeholder button{padding:6px 14px;border-radius:9px;background:var(--accent);color:var(--accent-text);font-size:11px;font-weight:800}
+
+/* resize handles */
+.rh{position:absolute;z-index:5}
+.rh.n{top:-4px;left:10px;right:10px;height:8px;cursor:ns-resize}
+.rh.s{bottom:-4px;left:10px;right:10px;height:8px;cursor:ns-resize}
+.rh.w{left:-4px;top:10px;bottom:10px;width:8px;cursor:ew-resize}
+.rh.e{right:-4px;top:10px;bottom:10px;width:8px;cursor:ew-resize}
+.rh.nw{left:-4px;top:-4px;width:14px;height:14px;cursor:nwse-resize}
+.rh.ne{right:-4px;top:-4px;width:14px;height:14px;cursor:nesw-resize}
+.rh.sw{left:-4px;bottom:-4px;width:14px;height:14px;cursor:nesw-resize}
+.rh.se{right:-4px;bottom:-4px;width:14px;height:14px;cursor:nwse-resize}
+.win.dragging,.win.resizing{transition:none!important;will-change:left,top,width,height}
+.win.dragging iframe,.win.resizing iframe{pointer-events:none}
+
+/* ============ 100 FRAMES ============ */
+/* 1-50 Old Frames */
+.win[data-frame="mochi"]{--win-r:22px}
+.win[data-frame="mochi"] .win-inner{border-width:4px;border-radius:22px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.6),inset 0 -4px 12px rgba(0,0,0,.05),0 8px 24px var(--glow)}
+.win[data-frame="cat"]{--win-r:20px}
+.win[data-frame="cat"]::before,.win[data-frame="cat"]::after{content:"";position:absolute;top:-16px;width:34px;height:36px;background:var(--win-border);clip-path:polygon(50% 0,0 100%,100% 100%);filter:drop-shadow(0 -3px 4px var(--glow))}
+.win[data-frame="cat"]::before{left:14px;transform:rotate(-8deg)}
+.win[data-frame="cat"]::after{right:14px;transform:rotate(8deg)}
+.win[data-frame="cat"] .win-inner{border-width:3px;border-radius:20px}
+.win[data-frame="bunny"]{--win-r:18px}
+.win[data-frame="bunny"]::before,.win[data-frame="bunny"]::after{content:"";position:absolute;top:-30px;width:16px;height:40px;background:var(--win-border);border-radius:50%;box-shadow:inset 0 0 0 3px rgba(255,255,255,.5)}
+.win[data-frame="bunny"]::before{left:24px;transform:rotate(-10deg)}
+.win[data-frame="bunny"]::after{right:24px;transform:rotate(10deg)}
+.win[data-frame="bunny"] .win-inner{border-width:3px;border-radius:18px 18px 26px 26px}
+.win[data-frame="cloud"]{--win-r:30px}
+.win[data-frame="cloud"] .win-inner{border-width:3px;border-radius:30px;box-shadow:inset 0 0 0 3px rgba(255,255,255,.4),0 10px 30px var(--glow)}
+.win[data-frame="cloud"]::before{content:"";position:absolute;top:-22px;left:20%;width:40px;height:40px;border-radius:50%;background:var(--win-border);box-shadow:50px -6px 0 -4px var(--win-border),-40px 4px 0 -6px var(--win-border)}
+.win[data-frame="cloud"]::after{content:"";position:absolute;bottom:-22px;right:22%;width:36px;height:36px;border-radius:50%;background:var(--win-border);box-shadow:-50px 4px 0 -6px var(--win-border)}
+.win[data-frame="lace"] .win-inner{border:4px dotted var(--win-border);border-radius:20px;box-shadow:inset 0 0 0 3px rgba(255,255,255,.5),0 6px 20px var(--glow)}
+.win[data-frame="lace"] .win-titlebar{border-radius:16px 16px 0 0;background:repeating-linear-gradient(45deg,var(--win-title) 0 8px,transparent 8px 16px),var(--accent)}
+.win[data-frame="crystal"]{--win-r:4px}
+.win[data-frame="crystal"] .win-inner{border:2px solid var(--win-border);border-radius:4px;clip-path:polygon(0 12px,12px 0,calc(100% - 12px) 0,100% 12px,100% calc(100% - 12px),calc(100% - 12px) 100%,12px 100%,0 calc(100% - 12px));background:linear-gradient(135deg,var(--win-bg),rgba(200,220,255,.3));box-shadow:0 0 20px var(--glow),inset 0 0 20px rgba(255,255,255,.4)}
+.win[data-frame="crystal"] .win-titlebar{border-radius:0;background:linear-gradient(135deg,var(--accent),var(--accent-2));clip-path:polygon(0 12px,12px 0,calc(100% - 12px) 0,100% 12px,100% 100%,0 100%)}
+.win[data-frame="angel"]{--win-r:20px}
+.win[data-frame="angel"]::before,.win[data-frame="angel"]::after{content:"";position:absolute;top:30%;width:40px;height:70px;background:radial-gradient(ellipse at center,rgba(255,245,200,.95),rgba(255,220,150,.4));border-radius:50% 50% 50% 50%/60% 60% 40% 40%;filter:drop-shadow(0 4px 10px rgba(255,220,150,.8))}
+.win[data-frame="angel"]::before{left:-34px;transform:rotate(-25deg)}
+.win[data-frame="angel"]::after{right:-34px;transform:rotate(25deg)}
+.win[data-frame="angel"] .win-inner{border:3px solid var(--win-border);border-radius:20px;box-shadow:inset 0 0 20px rgba(255,230,150,.4),0 0 30px var(--glow)}
+.win[data-frame="sakura"] .win-inner{border:3px solid var(--win-border);border-radius:20px;box-shadow:0 6px 20px var(--glow)}
+.win[data-frame="sakura"]::before{content:"✿";position:absolute;top:-18px;left:14px;font-size:26px;color:var(--accent);filter:drop-shadow(0 2px 4px var(--glow));z-index:2}
+.win[data-frame="sakura"]::after{content:"✿";position:absolute;bottom:-18px;right:16px;font-size:22px;color:var(--accent-2);filter:drop-shadow(0 2px 4px var(--glow));z-index:2}
+.win[data-frame="strawberry"] .win-inner{border:3px solid var(--win-border);border-radius:24px 24px 20px 20px;box-shadow:0 8px 24px var(--glow)}
+.win[data-frame="strawberry"]::before{content:"";position:absolute;top:-14px;left:50%;transform:translateX(-50%);width:30px;height:20px;background:linear-gradient(135deg,#6ac26a,#4aa04a);clip-path:polygon(50% 100%,0 0,20% 30%,40% 10%,60% 10%,80% 30%,100% 0);z-index:2}
+.win[data-frame="strawberry"]::after{content:"";position:absolute;top:2px;left:50%;transform:translateX(-50%);width:8px;height:8px;border-radius:50%;background:#fff;opacity:.4}
+.win[data-frame="cake"] .win-inner{border:4px solid var(--win-border);border-radius:8px 8px 16px 16px;box-shadow:0 8px 24px var(--glow),inset 0 -8px 0 rgba(255,200,220,.4)}
+.win[data-frame="cake"]::before{content:"";position:absolute;top:-8px;left:0;right:0;height:16px;background:repeating-linear-gradient(90deg,#ff9bc5 0 8px,#ffe4ee 8px 16px);border-radius:8px 8px 0 0;z-index:2}
+.win[data-frame="shooting-star"] .win-inner{border:3px solid var(--win-border);border-radius:18px;box-shadow:0 0 30px var(--glow),inset 0 0 20px rgba(255,255,220,.2)}
+.win[data-frame="shooting-star"]::before{content:"⭐";position:absolute;top:-18px;right:20px;font-size:22px;filter:drop-shadow(0 2px 6px var(--glow));z-index:2;animation:twinkle 2s ease-in-out infinite}
+.win[data-frame="moon"] .win-inner{border:3px solid var(--win-border);border-radius:30px 18px 18px 30px;box-shadow:0 0 30px var(--glow)}
+.win[data-frame="moon"]::before{content:"☾";position:absolute;top:-20px;left:-14px;font-size:36px;color:var(--accent);filter:drop-shadow(0 0 10px var(--glow));z-index:2}
+.win[data-frame="ocean"] .win-inner{border:3px solid var(--win-border);border-radius:20px;background:linear-gradient(180deg,var(--win-bg) 0%,rgba(200,240,255,.4) 100%);box-shadow:0 8px 24px var(--glow)}
+.win[data-frame="ocean"]::before{content:"";position:absolute;inset:0;border-radius:20px;background:radial-gradient(circle at 15% 85%,rgba(180,230,255,.7) 0 6px,transparent 7px),radial-gradient(circle at 80% 20%,rgba(180,230,255,.5) 0 4px,transparent 5px),radial-gradient(circle at 50% 95%,rgba(180,230,255,.6) 0 5px,transparent 6px),radial-gradient(circle at 90% 60%,rgba(180,230,255,.5) 0 3px,transparent 4px);pointer-events:none;z-index:2}
+.win[data-frame="coral"] .win-inner{border:3px solid #ff9a8a;border-radius:20px;box-shadow:0 8px 24px rgba(255,140,120,.4)}
+.win[data-frame="coral"]::before{content:"";position:absolute;bottom:-8px;left:0;right:0;height:16px;background:radial-gradient(circle at 20% 0,#ff7a6a 0 8px,transparent 9px),radial-gradient(circle at 50% 0,#ff8a7a 0 10px,transparent 11px),radial-gradient(circle at 80% 0,#ff6a5a 0 7px,transparent 8px);z-index:2}
+.win[data-frame="butterfly"] .win-inner{border:3px solid var(--win-border);border-radius:22px;box-shadow:0 8px 24px var(--glow)}
+.win[data-frame="butterfly"]::before{content:"🦋";position:absolute;top:-16px;right:-14px;font-size:28px;filter:drop-shadow(0 2px 6px var(--glow));z-index:2;animation:float 3s ease-in-out infinite}
+.win[data-frame="butterfly"]::after{content:"🌸";position:absolute;bottom:-14px;left:-12px;font-size:20px;z-index:2}
+.win[data-frame="castle"] .win-inner{border:3px solid var(--win-border);border-radius:4px;box-shadow:0 8px 24px var(--glow)}
+.win[data-frame="castle"]::before{content:"";position:absolute;top:-16px;left:10px;right:10px;height:16px;background:var(--win-border);clip-path:polygon(0 100%,0 40%,10% 40%,10% 0,20% 0,20% 40%,30% 40%,30% 0,40% 0,40% 40%,50% 40%,50% 0,60% 0,60% 40%,70% 40%,70% 0,80% 0,80% 40%,90% 40%,90% 0,100% 0,100% 40%,100% 100%);z-index:2}
+.win[data-frame="stained-glass"] .win-inner{border:4px solid var(--win-border);border-radius:6px;background:linear-gradient(135deg,var(--win-bg) 0%,rgba(255,200,255,.3) 25%,rgba(200,220,255,.3) 50%,rgba(255,220,200,.3) 75%,var(--win-bg) 100%);box-shadow:inset 0 0 30px rgba(255,200,255,.3),0 8px 24px var(--glow)}
+.win[data-frame="sticker"] .win-inner{border:8px solid #fff;border-radius:24px;box-shadow:0 0 0 2px var(--win-border),0 10px 30px var(--glow)}
+.win[data-frame="pixel"]{--win-r:0}
+.win[data-frame="pixel"] .win-inner{border:4px solid var(--win-border);border-radius:0;box-shadow:8px 8px 0 rgba(0,0,0,.15);image-rendering:pixelated}
+.win[data-frame="pixel"] .win-titlebar{border-radius:0;background:repeating-linear-gradient(90deg,var(--accent) 0 4px,var(--accent-2) 4px 8px)}
+.win[data-frame="neon"] .win-inner{border:2px solid #00f0ff;border-radius:12px;box-shadow:0 0 15px #00f0ff,0 0 30px rgba(0,240,255,.5),inset 0 0 15px rgba(0,240,255,.3),0 0 50px rgba(255,64,192,.3)}
+.win[data-frame="neon"] .win-titlebar{background:linear-gradient(90deg,#0a0a1a,#00f0ff20,#ff40c020);text-shadow:0 0 10px #00f0ff;border-bottom:1px solid #00f0ff}
+.win[data-frame="holo"] .win-inner{border:3px solid transparent;border-radius:18px;background:linear-gradient(var(--win-bg),var(--win-bg)) padding-box,linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb,#a6c1ee,#a1c4fd,#c2e9fb,#a1c4fd) border-box;box-shadow:0 8px 24px rgba(180,200,255,.4)}
+.win[data-frame="holo"] .win-titlebar{background:linear-gradient(135deg,#ffb0d0,#b0d0ff,#d0b0ff);color:#fff}
+.win[data-frame="glass"] .win-inner{border:2px solid rgba(255,255,255,.6);border-radius:20px;background:rgba(255,255,255,.55);backdrop-filter:blur(20px) saturate(180%);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 10px 30px rgba(150,180,255,.3)}
+.win[data-frame="glass"] .win-titlebar{background:rgba(255,255,255,.4);backdrop-filter:blur(10px);color:var(--text);border-bottom:1px solid rgba(255,255,255,.5)}
+.win[data-frame="glass"] iframe{background:transparent}
+.win[data-frame="knit"] .win-inner{border:6px solid var(--win-border);border-radius:16px;background:repeating-linear-gradient(45deg,var(--win-bg) 0 6px,rgba(255,255,255,.3) 6px 12px);box-shadow:0 8px 24px var(--glow)}
+.win[data-frame="wood"] .win-inner{border:8px solid #c89060;border-radius:8px;background:repeating-linear-gradient(90deg,rgba(180,130,80,.15) 0 3px,transparent 3px 8px),var(--win-bg);box-shadow:0 8px 24px rgba(150,100,60,.4)}
+.win[data-frame="ice"] .win-inner{border:3px solid #a8e0ff;border-radius:14px;background:linear-gradient(135deg,rgba(220,245,255,.9),rgba(180,220,255,.6));box-shadow:0 0 30px rgba(150,220,255,.6),inset 0 0 20px rgba(255,255,255,.6)}
+.win[data-frame="ice"]::before,.win[data-frame="ice"]::after{content:"";position:absolute;top:-10px;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:14px solid #a8e0ff;filter:drop-shadow(0 0 6px rgba(150,220,255,.8))}
+.win[data-frame="ice"]::before{left:20px}
+.win[data-frame="ice"]::after{right:20px}
+.win[data-frame="magic-fire"] .win-inner{border:3px solid #ff7a30;border-radius:18px;box-shadow:0 0 25px rgba(255,122,48,.7),inset 0 0 20px rgba(255,180,80,.3)}
+.win[data-frame="magic-fire"]::before,.win[data-frame="magic-fire"]::after{content:"";position:absolute;top:-14px;width:14px;height:22px;background:radial-gradient(ellipse at center,#ffea30,#ff7a30,transparent);border-radius:50% 50% 50% 50%/60% 60% 40% 40%;animation:flicker 1.5s ease-in-out infinite;filter:blur(1px)}
+.win[data-frame="magic-fire"]::before{left:20%}
+.win[data-frame="magic-fire"]::after{right:20%;animation-delay:.4s}
+.win[data-frame="lollipop"] .win-inner{border:5px solid #ff9ad0;border-radius:22px;background:repeating-conic-gradient(from 0deg at 50% 50%,#fff 0deg 15deg,#ffe4ee 15deg 30deg);box-shadow:0 8px 24px rgba(255,150,200,.5)}
+.win[data-frame="lollipop"] iframe{background:#fff;border-radius:12px;margin:6px;width:calc(100% - 12px);height:calc(100% - 12px)}
+.win[data-frame="chocolate"] .win-inner{border:5px solid #6a3a1a;border-radius:14px;background:linear-gradient(135deg,#8a5a3a,#6a3a1a);box-shadow:0 8px 24px rgba(100,50,20,.5)}
+.win[data-frame="chocolate"] .win-titlebar{background:linear-gradient(135deg,#8a5a3a,#5a2a0a);color:#ffe8c8}
+.win[data-frame="chocolate"] iframe{background:#fff;border-radius:8px;margin:4px;width:calc(100% - 8px);height:calc(100% - 8px)}
+.win[data-frame="macaron"] .win-inner{border:none;border-radius:30px;background:var(--win-bg);box-shadow:0 0 0 12px #ffc8e0,0 0 0 14px #ffd8ec,0 10px 30px rgba(255,180,220,.5)}
+.win[data-frame="macaron"] .win-titlebar{border-radius:28px 28px 0 0;background:linear-gradient(135deg,#ffd8ec,#ffc8e0);color:#8a3a5a}
+.win[data-frame="tulip"] .win-inner{border:3px solid #ff9ab0;border-radius:22px 22px 14px 14px;box-shadow:0 8px 24px rgba(255,150,180,.4)}
+.win[data-frame="tulip"]::before{content:"";position:absolute;top:-18px;left:50%;transform:translateX(-50%);width:30px;height:20px;background:#ff7aa0;clip-path:polygon(0 100%,20% 0,40% 40%,50% 0,60% 40%,80% 0,100% 100%);z-index:2;filter:drop-shadow(0 2px 4px rgba(255,120,160,.5))}
+.win[data-frame="vine"] .win-inner{border:3px solid #6ac26a;border-radius:14px;box-shadow:0 8px 24px rgba(100,180,100,.4)}
+.win[data-frame="vine"]::before{content:"🌿";position:absolute;top:-14px;left:12px;font-size:22px;z-index:2}
+.win[data-frame="vine"]::after{content:"🌸";position:absolute;bottom:-12px;right:14px;font-size:18px;z-index:2}
+.win[data-frame="crown"] .win-inner{border:3px solid #ffd070;border-radius:14px;box-shadow:0 0 20px rgba(255,208,112,.6)}
+.win[data-frame="crown"]::before{content:"";position:absolute;top:-16px;left:50%;transform:translateX(-50%);width:40px;height:18px;background:#ffd070;clip-path:polygon(0 100%,10% 20%,30% 60%,50% 0,70% 60%,90% 20%,100% 100%);z-index:2;filter:drop-shadow(0 2px 4px rgba(255,200,80,.6))}
+.win[data-frame="heart"] .win-inner{border:3px solid #ff6a9a;border-radius:20px;box-shadow:0 8px 24px rgba(255,100,150,.4)}
+.win[data-frame="heart"]::before{content:"💗";position:absolute;top:-16px;left:14px;font-size:22px;z-index:2;animation:float 3s ease-in-out infinite}
+.win[data-frame="heart"]::after{content:"💗";position:absolute;bottom:-14px;right:14px;font-size:18px;z-index:2;animation:float 3s ease-in-out infinite reverse}
+.win[data-frame="pearl"] .win-inner{border:6px dotted #e8d8f0;border-radius:22px;box-shadow:0 8px 30px rgba(200,180,240,.5),inset 0 0 20px rgba(255,255,255,.6)}
+.win[data-frame="galaxy"] .win-inner{border:3px solid #b090ff;border-radius:18px;background:radial-gradient(circle at 20% 30%,rgba(255,122,217,.3),transparent 50%),radial-gradient(circle at 80% 70%,rgba(140,100,255,.3),transparent 50%),var(--win-bg);box-shadow:0 0 30px rgba(180,144,255,.6),inset 0 0 20px rgba(255,122,217,.3)}
+.win[data-frame="galaxy"] .win-titlebar{background:linear-gradient(135deg,#2a1050,#b090ff);color:#fff}
+.win[data-frame="planet"] .win-inner{border:3px solid #6ab0ff;border-radius:18px;box-shadow:0 8px 24px rgba(100,160,255,.4)}
+.win[data-frame="planet"]::before{content:"";position:absolute;top:-14px;right:16px;width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#ff9a6a,#c05a30);box-shadow:inset -4px -4px 8px rgba(0,0,0,.3);z-index:2}
+.win[data-frame="planet"]::after{content:"";position:absolute;top:-8px;right:8px;width:44px;height:14px;border:2px solid rgba(255,180,120,.7);border-radius:50%;transform:rotate(-20deg);z-index:1}
+.win[data-frame="bubble"] .win-inner{border:2px solid rgba(180,220,255,.8);border-radius:50% 50% 50% 50%/8% 8% 8% 8%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.8),rgba(200,230,255,.5));box-shadow:inset 0 0 30px rgba(255,255,255,.8),0 10px 30px rgba(150,200,255,.4)}
+.win[data-frame="gift"] .win-inner{border:3px solid #ff5a8a;border-radius:10px;box-shadow:0 8px 24px rgba(255,90,140,.4)}
+.win[data-frame="gift"]::before{content:"";position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:24px;height:20px;background:#ff5a8a;clip-path:polygon(0 100%,20% 40%,50% 0,80% 40%,100% 100%);z-index:2}
+.win[data-frame="gift"]::after{content:"";position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:6px;background:repeating-linear-gradient(0deg,#ffd070 0 6px,#ff5a8a 6px 12px);opacity:.4;z-index:1}
+.win[data-frame="notebook"] .win-inner{border:2px solid var(--win-border);border-radius:8px;background:repeating-linear-gradient(0deg,transparent 0 22px,rgba(150,180,220,.3) 22px 23px),var(--win-bg);box-shadow:0 8px 24px var(--glow)}
+.win[data-frame="notebook"]::before{content:"";position:absolute;left:-8px;top:14px;bottom:14px;width:8px;background:repeating-linear-gradient(0deg,var(--accent) 0 6px,transparent 6px 14px);border-radius:4px}
+.win[data-frame="cassette"] .win-inner{border:4px solid #4a4a5a;border-radius:14px;background:linear-gradient(135deg,#5a5a6a,#3a3a4a);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.win[data-frame="cassette"] .win-titlebar{background:linear-gradient(135deg,#6a6a7a,#3a3a4a);color:#ffe8a0}
+.win[data-frame="cassette"]::before,.win[data-frame="cassette"]::after{content:"";position:absolute;top:50%;width:14px;height:14px;border-radius:50%;background:#ffe8a0;border:3px solid #4a4a5a;z-index:3;transform:translateY(-50%)}
+.win[data-frame="cassette"]::before{left:8px}
+.win[data-frame="cassette"]::after{right:8px}
+.win[data-frame="gameboy"] .win-inner{border:6px solid #b8b8c8;border-radius:8px 8px 20px 8px;background:#e8e8f0;box-shadow:0 8px 24px rgba(0,0,0,.3),inset 0 0 20px rgba(120,120,160,.3)}
+.win[data-frame="gameboy"] .win-titlebar{background:linear-gradient(135deg,#b8b8c8,#a0a0b8);color:#fff;text-shadow:1px 1px 0 rgba(0,0,0,.3)}
+.win[data-frame="gameboy"]::after{content:"";position:absolute;bottom:6px;right:8px;width:12px;height:12px;border-radius:50%;background:#c04060;box-shadow:-16px 0 0 #4050a0;z-index:3}
+.win[data-frame="polaroid"] .win-inner{border:none;border-radius:4px;background:#fff;padding:0;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.win[data-frame="polaroid"]{padding-bottom:30px}
+.win[data-frame="polaroid"] .win-titlebar{border-radius:4px 4px 0 0;background:#f8f8f8;color:#5a5a5a;border-bottom:1px solid #e0e0e0}
+.win[data-frame="polaroid"]::after{content:"♡ Mochi Space ♡";position:absolute;bottom:6px;left:0;right:0;text-align:center;font-size:11px;color:#5a5a5a;font-family:cursive;z-index:2}
+.win[data-frame="sticker-stack"] .win-inner{border:4px solid #fff;border-radius:18px;box-shadow:4px 4px 0 var(--accent),8px 8px 0 var(--accent-2),0 10px 30px var(--glow)}
+.win[data-frame="anime-badge"] .win-inner{border:3px solid var(--win-border);border-radius:14px;box-shadow:0 0 0 6px rgba(255,255,255,.3),0 8px 24px var(--glow)}
+.win[data-frame="anime-badge"]::before{content:"✦";position:absolute;top:-20px;left:-16px;font-size:28px;color:var(--accent);filter:drop-shadow(0 0 6px var(--glow));z-index:2}
+.win[data-frame="sunset"] .win-inner{border:3px solid #ff9a6a;border-radius:18px;background:linear-gradient(180deg,#ffe8c8 0%,#ffc8a8 40%,#ff9a6a 100%);box-shadow:0 8px 30px rgba(255,150,100,.5)}
+.win[data-frame="sunset"] iframe{background:#fff;border-radius:14px;margin:6px;width:calc(100% - 12px);height:calc(100% - 12px)}
+.win[data-frame="rainbow"] .win-inner{border:4px solid transparent;border-radius:18px;background:linear-gradient(var(--win-bg),var(--win-bg)) padding-box,linear-gradient(135deg,#ff6a6a,#ffb86a,#ffe86a,#8ae88a,#6ac8ff,#a06aff,#ff6ac8) border-box;box-shadow:0 8px 30px rgba(255,180,220,.4)}
+.win[data-frame="rainbow"] .win-titlebar{background:linear-gradient(90deg,#ff8ab0,#ffd08a,#c8ff8a,#8ad0ff,#c88aff,#ff8ad0);color:#fff}
+.win[data-frame="amethyst"] .win-inner{border:3px solid #b090ff;border-radius:6px;background:linear-gradient(135deg,rgba(180,144,255,.3),rgba(255,200,255,.2),rgba(140,100,255,.3)),var(--win-bg);box-shadow:inset 0 0 30px rgba(180,144,255,.4),0 8px 30px rgba(160,120,255,.5);clip-path:polygon(8px 0,calc(100% - 8px) 0,100% 8px,100% calc(100% - 8px),calc(100% - 8px) 100%,8px 100%,0 calc(100% - 8px),0 8px)}
+.win[data-frame="fairy-garden"] .win-inner{border:3px solid #8ad8a8;border-radius:20px;box-shadow:0 8px 24px rgba(120,200,150,.4)}
+.win[data-frame="fairy-garden"]::before{content:"🌷";position:absolute;top:-16px;left:12px;font-size:20px;z-index:2}
+.win[data-frame="fairy-garden"]::after{content:"🧚";position:absolute;bottom:-16px;right:12px;font-size:20px;z-index:2;animation:float 3s ease-in-out infinite}
+.win[data-frame="ice-palace"] .win-inner{border:3px solid #b0e0ff;border-radius:8px;background:linear-gradient(135deg,rgba(220,245,255,.9),rgba(180,220,255,.6));box-shadow:0 0 40px rgba(150,220,255,.6),inset 0 0 30px rgba(255,255,255,.7)}
+.win[data-frame="ice-palace"]::before{content:"";position:absolute;top:-22px;left:14px;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:24px solid #b0e0ff;filter:drop-shadow(0 0 8px rgba(150,220,255,.9))}
+.win[data-frame="ice-palace"]::after{content:"";position:absolute;top:-30px;right:20px;width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:18px solid #b0e0ff;filter:drop-shadow(0 0 8px rgba(150,220,255,.9))}
+.win[data-frame="mochi-royal"] .win-inner{border:4px solid transparent;border-radius:22px;background:linear-gradient(var(--win-bg),var(--win-bg)) padding-box,linear-gradient(135deg,#ffd070,#ff7ad9,#b090ff,#7ad0ff,#ffd070) border-box;box-shadow:0 0 30px rgba(255,208,112,.5),0 8px 30px var(--glow),inset 0 0 20px rgba(255,255,255,.4)}
+.win[data-frame="mochi-royal"]::before{content:"♛";position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:22px;color:#ffd070;filter:drop-shadow(0 2px 6px rgba(255,208,112,.8));z-index:2}
+
+/* 51-100 New Frames */
+.win[data-frame="frame_051"] .win-inner{border:2px dashed #a898c8;border-radius:50% 50% 10px 10px;box-shadow:inset 0 0 20px rgba(180,160,255,.4),0 10px 30px var(--glow)}
+.win[data-frame="frame_052"] .win-inner{border:2px solid #b890ff;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);box-shadow:5px 5px 0 #b890ff,10px 10px 0 var(--accent-2),0 12px 24px rgba(160,120,255,.4)}
+.win[data-frame="frame_053"]::before,.win[data-frame="frame_053"]::after{content:"";position:absolute;top:-20px;width:40px;height:40px;background:linear-gradient(45deg,transparent 40%,#ff7a30 40%,#ff7a30 60%,transparent 60%);border-radius:50%}
+.win[data-frame="frame_053"]::before{left:10px;transform:rotate(-20deg)}
+.win[data-frame="frame_053"]::after{right:10px;transform:rotate(20deg)}
+.win[data-frame="frame_053"] .win-inner{border:3px solid #ff7a30;border-radius:12px;box-shadow:0 0 25px rgba(255,122,48,.5)}
+.win[data-frame="frame_054"] .win-inner{border:4px double #ff6ac8;border-radius:50% 50% 0 0;box-shadow:inset 0 0 30px rgba(255,106,200,.3),0 0 30px var(--glow)}
+.win[data-frame="frame_055"] .win-inner{border:3px solid #ffd070;border-radius:10px;background:repeating-linear-gradient(0deg,transparent 0 30px,rgba(255,208,112,.1) 30px 32px),var(--win-bg);box-shadow:0 10px 30px rgba(255,208,112,.4)}
+.win[data-frame="frame_056"] .win-inner{border:3px solid #6ac2a8;border-radius:50% 10px 50% 10px;box-shadow:inset 0 0 20px rgba(106,194,168,.4),0 8px 24px var(--glow)}
+.win[data-frame="frame_057"] .win-inner{border:4px solid #ff8ab0;border-radius:20px;box-shadow:0 0 0 4px rgba(255,138,176,.3),0 12px 30px rgba(255,100,150,.4)}
+.win[data-frame="frame_057"]::before{content:"";position:absolute;top:-15px;left:20%;width:16px;height:16px;background:#ff8ab0;border-radius:50%;box-shadow:20px 5px 0 #ff8ab0,-10px 10px 0 #ff8ab0}
+.win[data-frame="frame_058"] .win-inner{border:2px solid #7ad0ff;border-radius:18px 4px 18px 4px;box-shadow:0 0 20px rgba(122,208,255,.6)}
+.win[data-frame="frame_058"]::before{content:"⚗";position:absolute;bottom:-24px;left:-16px;font-size:30px;color:#7ad0ff;z-index:2}
+.win[data-frame="frame_059"] .win-inner{border:3px solid #ff9a30;border-radius:18px;background:linear-gradient(135deg,var(--win-bg),rgba(255,180,80,.2));box-shadow:0 0 30px rgba(255,154,48,.6),inset 0 0 20px rgba(255,220,150,.3)}
+.win[data-frame="frame_059"]::before{content:"";position:absolute;top:-16px;left:20px;width:30px;height:16px;background:#ff9a30;clip-path:polygon(0 100%,50% 0,100% 100%);z-index:2}
+.win[data-frame="frame_060"] .win-inner{border:2px solid #a8e0ff;border-radius:8px;box-shadow:0 0 0 4px #a8e0ff,0 0 0 6px var(--win-bg),0 0 0 8px #a8e0ff,0 10px 30px rgba(168,224,255,.5)}
+.win[data-frame="frame_061"]::before,.win[data-frame="frame_061"]::after{content:"";position:absolute;bottom:-10px;width:30px;height:30px;background:#ff9a6a;border-radius:50% 50% 0 50%;transform-origin:bottom center}
+.win[data-frame="frame_061"]::before{left:20%;transform:rotate(-45deg)}
+.win[data-frame="frame_061"]::after{right:20%;transform:rotate(45deg)}
+.win[data-frame="frame_061"] .win-inner{border:3px solid #ff9a6a;border-radius:30px 30px 0 0;box-shadow:0 10px 30px rgba(255,154,106,.4)}
+.win[data-frame="frame_062"] .win-inner{border:3px solid #4aa04a;border-radius:12px;background:repeating-linear-gradient(90deg,var(--win-bg) 0 20px,rgba(74,160,74,.1) 20px 22px);box-shadow:0 8px 24px rgba(74,160,74,.4)}
+.win[data-frame="frame_062"]::before{content:"🐼";position:absolute;top:-20px;right:10px;font-size:24px;z-index:2}
+.win[data-frame="frame_063"] .win-inner{border:4px solid #f5d0a9;border-radius:16px;box-shadow:0 8px 24px rgba(200,150,100,.4)}
+.win[data-frame="frame_063"]::before{content:"🍞";position:absolute;top:-18px;left:14px;font-size:24px;z-index:2}
+.win[data-frame="frame_064"] .win-inner{border:3px solid #a8c0ff;border-radius:10px;background:linear-gradient(180deg,rgba(220,240,255,.8),rgba(180,210,255,.5));box-shadow:0 0 25px rgba(168,192,255,.5)}
+.win[data-frame="frame_064"]::after{content:"❄";position:absolute;bottom:-16px;right:-14px;font-size:26px;color:#a8c0ff;filter:drop-shadow(0 2px 4px rgba(168,192,255,.8))}
+.win[data-frame="frame_065"] .win-inner{border:3px solid #c8a080;border-radius:20px 20px 8px 8px;box-shadow:0 8px 24px rgba(200,160,128,.4)}
+.win[data-frame="frame_065"]::before{content:"♨";position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:24px;color:#c8a080;z-index:2}
+.win[data-frame="frame_066"] .win-inner{border:2px solid #ffaad0;border-radius:50% 50% 10px 10px;box-shadow:inset 0 0 20px rgba(255,170,208,.4),0 8px 24px rgba(255,150,200,.3)}
+.win[data-frame="frame_066"]::before{content:"";position:absolute;top:-10px;left:20%;width:10px;height:30px;background:#ffaad0;border-radius:5px;box-shadow:15px -5px 0 #ffaad0,30px 5px 0 #ffaad0;filter:blur(1px)}
+.win[data-frame="frame_067"] .win-inner{border:3px solid #6ac2e8;border-radius:16px;background:linear-gradient(135deg,rgba(200,240,255,.8),rgba(160,220,255,.5));box-shadow:0 8px 24px rgba(106,194,232,.4)}
+.win[data-frame="frame_067"]::before{content:"🌊";position:absolute;bottom:-16px;left:20%;font-size:20px;z-index:2}
+.win[data-frame="frame_068"] .win-inner{border:3px solid #a08060;border-radius:12px;box-shadow:0 8px 24px rgba(160,128,96,.4)}
+.win[data-frame="frame_068"]::before{content:"🦔";position:absolute;top:-18px;right:16px;font-size:20px;z-index:2}
+.win[data-frame="frame_068"]::after{content:"🍄";position:absolute;bottom:-14px;left:14px;font-size:18px;z-index:2}
+.win[data-frame="frame_069"] .win-inner{border:3px solid #c8a060;border-radius:18px;box-shadow:0 8px 24px rgba(200,160,96,.4)}
+.win[data-frame="frame_069"]::before{content:"";position:absolute;top:-24px;left:20px;width:20px;height:24px;background:#c8a060;clip-path:polygon(0 100%,50% 0,100% 100%);z-index:2}
+.win[data-frame="frame_069"]::after{content:"";position:absolute;top:-24px;right:20px;width:20px;height:24px;background:#c8a060;clip-path:polygon(0 100%,50% 0,100% 100%);z-index:2}
+.win[data-frame="frame_070"] .win-inner{border:3px solid #80c080;border-radius:12px;box-shadow:0 8px 24px rgba(128,192,128,.4)}
+.win[data-frame="frame_070"]::before{content:"🦕";position:absolute;top:-18px;left:16px;font-size:22px;z-index:2}
+.win[data-frame="frame_071"] .win-inner{border:4px solid rgba(200,240,220,.8);border-radius:8px;background:repeating-linear-gradient(90deg,transparent 0 40px,rgba(200,240,220,.1) 40px 42px),repeating-linear-gradient(0deg,transparent 0 40px,rgba(200,240,220,.1) 40px 42px),var(--win-bg);box-shadow:0 8px 24px rgba(180,230,200,.4)}
+.win[data-frame="frame_072"] .win-inner{border:3px solid #ff9a8a;border-radius:30px 30px 10px 10px;box-shadow:0 8px 24px rgba(255,154,138,.4)}
+.win[data-frame="frame_072"]::before{content:"";position:absolute;top:-12px;left:10%;right:10%;height:12px;background:#ff9a8a;border-radius:10px 10px 0 0}
+.win[data-frame="frame_073"] .win-inner{border:3px solid #6ac26a;border-radius:20px;box-shadow:0 8px 24px rgba(106,194,106,.4)}
+.win[data-frame="frame_073"]::before{content:"🌿";position:absolute;top:-16px;left:12px;font-size:22px;z-index:2}
+.win[data-frame="frame_073"]::after{content:"🌿";position:absolute;bottom:-16px;right:12px;font-size:22px;z-index:2;transform:scaleX(-1)}
+.win[data-frame="frame_074"] .win-inner{border:2px solid #c8a080;border-radius:8px;background:repeating-linear-gradient(0deg,var(--win-bg) 0 24px,rgba(200,160,128,.1) 24px 25px);box-shadow:0 8px 24px rgba(200,160,128,.4)}
+.win[data-frame="frame_074"]::before{content:"🍂";position:absolute;top:-18px;right:14px;font-size:22px;z-index:2}
+.win[data-frame="frame_075"] .win-inner{border:3px solid #ffaad0;border-radius:10px;background:linear-gradient(180deg,var(--win-bg),rgba(255,200,230,.3));box-shadow:0 8px 24px rgba(255,170,208,.4)}
+.win[data-frame="frame_075"]::before{content:"🌸";position:absolute;top:-18px;left:14px;font-size:24px;z-index:2}
+.win[data-frame="frame_075"]::after{content:"🌸";position:absolute;bottom:-14px;right:16px;font-size:20px;z-index:2}
+.win[data-frame="frame_076"] .win-inner{border:4px solid transparent;border-image:linear-gradient(45deg,#ff9a6a,#ffd070,#6ac26a,#6ac2e8) 1;border-radius:8px;box-shadow:0 8px 24px rgba(150,200,255,.4)}
+.win[data-frame="frame_077"] .win-inner{border:3px solid #b0e0ff;border-radius:50% 50% 10px 10px;background:linear-gradient(180deg,rgba(220,245,255,.8),rgba(180,220,255,.5));box-shadow:0 0 30px rgba(176,224,255,.6)}
+.win[data-frame="frame_078"] .win-inner{border:3px solid #e8c8a0;border-radius:14px;box-shadow:inset 0 0 20px rgba(232,200,160,.4),0 8px 24px rgba(200,160,120,.4)}
+.win[data-frame="frame_078"]::before{content:"☀";position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:26px;color:#e8c8a0;z-index:2}
+.win[data-frame="frame_079"] .win-inner{border:3px solid #ff9a6a;border-radius:4px 20px 4px 20px;box-shadow:0 8px 24px rgba(255,154,106,.4)}
+.win[data-frame="frame_079"]::before{content:"🏜";position:absolute;bottom:-14px;right:14px;font-size:20px;z-index:2}
+.win[data-frame="frame_080"] .win-inner{border:2px solid #6ac2a8;border-radius:20px;background:radial-gradient(ellipse at 50% 0%,rgba(106,194,168,.3),transparent 50%),var(--win-bg);box-shadow:0 0 30px rgba(106,194,168,.5)}
+.win[data-frame="frame_081"] .win-inner{border:3px solid #f0e0d0;border-radius:50% 10px 50% 10px;box-shadow:0 0 20px rgba(240,224,208,.6)}
+.win[data-frame="frame_081"]::before{content:"🎀";position:absolute;top:-18px;right:14px;font-size:24px;z-index:2}
+.win[data-frame="frame_082"] .win-inner{border:4px solid #c84060;border-radius:12px;background:repeating-linear-gradient(45deg,rgba(200,64,96,.1) 0 10px,transparent 10px 20px),var(--win-bg);box-shadow:0 8px 24px rgba(200,64,96,.4)}
+.win[data-frame="frame_083"] .win-inner{border:2px solid #ffaad0;border-radius:20px;background:repeating-linear-gradient(45deg,var(--win-bg) 0 20px,rgba(255,170,208,.1) 20px 22px);box-shadow:inset 0 0 20px rgba(255,170,208,.3),0 8px 24px rgba(255,150,200,.3)}
+.win[data-frame="frame_084"] .win-inner{border:2px solid #a8e0ff;border-radius:4px;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);box-shadow:0 0 20px rgba(168,224,255,.5)}
+.win[data-frame="frame_085"] .win-inner{border:3px solid #e8c8a0;border-radius:20px 20px 4px 4px;box-shadow:0 8px 24px rgba(232,200,160,.4)}
+.win[data-frame="frame_085"]::before{content:"🎎";position:absolute;top:-18px;left:14px;font-size:22px;z-index:2}
+.win[data-frame="frame_086"] .win-inner{border:6px dashed #ffaad0;border-radius:50%;box-shadow:0 0 20px rgba(255,170,208,.4)}
+.win[data-frame="frame_087"] .win-inner{border:2px solid transparent;border-image:linear-gradient(45deg,#ff6a6a,#6ac2e8,#ffd070) 1;border-radius:0;box-shadow:0 8px 24px rgba(150,200,255,.4)}
+.win[data-frame="frame_088"] .win-inner{border:4px solid #d0d0e0;border-radius:20px;background:linear-gradient(135deg,rgba(240,240,250,.9),rgba(200,200,220,.7));box-shadow:inset 0 0 20px rgba(255,255,255,.8),0 8px 24px rgba(180,180,200,.5)}
+.win[data-frame="frame_089"] .win-inner{border:3px solid #e0e0e0;border-radius:8px;background:repeating-linear-gradient(45deg,rgba(200,200,200,.1) 0 15px,transparent 15px 30px),var(--win-bg);box-shadow:0 8px 24px rgba(180,180,180,.4)}
+.win[data-frame="frame_090"] .win-inner{border:2px solid #c8e0ff;border-radius:10px;background:linear-gradient(135deg,rgba(220,240,255,.8),rgba(180,220,255,.5));box-shadow:0 0 20px rgba(200,224,255,.5);clip-path:polygon(0 10px,10px 0,calc(100% - 10px) 0,100% 10px,100% calc(100% - 10px),calc(100% - 10px) 100%,10px 100%,0 calc(100% - 10px))}
+.win[data-frame="frame_091"] .win-inner{border:2px solid #00f0ff;border-radius:4px;box-shadow:0 0 10px #00f0ff,0 0 20px rgba(0,240,255,.5),inset 0 0 10px rgba(0,240,255,.2)}
+.win[data-frame="frame_091"]::before{content:"";position:absolute;top:4px;left:4px;width:6px;height:6px;background:#00f0ff;box-shadow:10px 0 0 #00f0ff,0 10px 0 #00f0ff}
+.win[data-frame="frame_092"] .win-inner{border:4px solid #4a4a5a;border-radius:8px;background:#1a1a2a;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.win[data-frame="frame_092"] .win-titlebar{background:#2a2a3a;color:#00f0ff}
+.win[data-frame="frame_092"]::before{content:"";position:absolute;bottom:6px;left:10px;width:8px;height:8px;background:#ff5a7a;border-radius:50%;box-shadow:12px 0 0 #ffd070,24px 0 0 #6ac26a}
+.win[data-frame="frame_093"] .win-inner{border:3px solid #a0a0b0;border-radius:4px;background:#e0e0e8;box-shadow:inset 0 0 20px rgba(150,150,160,.3),0 8px 24px rgba(100,100,120,.4)}
+.win[data-frame="frame_093"] .win-titlebar{background:#c0c0c8;color:#3a3a4a}
+.win[data-frame="frame_093"]::before{content:"";position:absolute;top:-12px;left:10px;right:10px;height:12px;background:repeating-linear-gradient(90deg,#a0a0b0 0 10px,#c0c0d0 10px 20px);border-radius:4px 4px 0 0}
+.win[data-frame="frame_094"] .win-inner{border:3px solid #6a6a8a;border-radius:8px;background:linear-gradient(135deg,#8a8aaa,#4a4a6a);box-shadow:0 8px 24px rgba(60,60,80,.5)}
+.win[data-frame="frame_094"]::before{content:"";position:absolute;top:-10px;left:20%;right:20%;height:10px;background:#6a6a8a;clip-path:polygon(0 100%,10% 0,30% 100%,50% 0,70% 100%,90% 0,100% 100%)}
+.win[data-frame="frame_095"] .win-inner{border:2px solid #00f0ff;border-radius:12px;box-shadow:0 0 15px #00f0ff,inset 0 0 15px rgba(0,240,255,.3)}
+.win[data-frame="frame_095"]::before{content:"";position:absolute;bottom:-10px;left:10%;right:10%;height:10px;background:repeating-linear-gradient(90deg,#00f0ff 0 4px,transparent 4px 8px)}
+.win[data-frame="frame_096"] .win-inner{border:4px solid #e8c8a0;border-radius:50%;box-shadow:0 0 20px rgba(232,200,160,.6),inset 0 0 20px rgba(255,240,220,.4)}
+.win[data-frame="frame_096"]::before{content:"";position:absolute;top:-10px;left:-10px;right:-10px;bottom:-10px;border:4px solid rgba(232,200,160,.4);border-radius:50%}
+.win[data-frame="frame_097"] .win-inner{border:3px solid #ffd070;border-radius:10px;box-shadow:0 0 30px rgba(255,208,112,.6)}
+.win[data-frame="frame_097"]::before{content:"";position:absolute;top:-20px;right:-20px;width:40px;height:40px;background:radial-gradient(circle at 30% 30%,#ffea30,#ff9a30,transparent);border-radius:50%;filter:blur(2px)}
+.win[data-frame="frame_098"] .win-inner{border:2px solid #4a4a6a;border-radius:50%;background:#1a1a2a;box-shadow:0 0 40px #4a4a6a,0 0 80px rgba(74,74,106,.5),inset 0 0 20px #000}
+.win[data-frame="frame_098"]::before{content:"";position:absolute;top:-15px;left:-15px;right:-15px;bottom:-15px;border:2px solid rgba(106,106,138,.5);border-radius:50%}
+.win[data-frame="frame_098"] .win-titlebar{background:#2a2a3a;color:#a0a0c0}
+.win[data-frame="frame_099"] .win-inner{border:4px solid #e0e0e8;clip-path:polygon(10px 0,calc(100% - 10px) 0,100% 10px,100% calc(100% - 10px),calc(100% - 10px) 100%,10px 100%,0 calc(100% - 10px),0 10px);background:linear-gradient(135deg,rgba(240,240,250,.9),rgba(200,200,220,.7));box-shadow:0 8px 30px rgba(180,180,200,.5)}
+.win[data-frame="frame_099"]::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:2px;background:rgba(150,150,170,.5)}
+.win[data-frame="frame_100"] .win-inner{border:3px solid #c8a0ff;border-radius:16px;background:linear-gradient(135deg,rgba(200,160,255,.1),rgba(255,200,255,.1)),var(--win-bg);box-shadow:0 0 30px rgba(200,160,255,.5)}
+.win[data-frame="frame_100"]::before{content:"";position:absolute;top:-20px;left:20px;width:20px;height:20px;border:2px solid #c8a0ff;transform:rotate(45deg)}
+.win[data-frame="frame_100"]::after{content:"";position:absolute;bottom:-20px;right:20px;width:20px;height:20px;border:2px solid #c8a0ff;transform:rotate(45deg)}
+
+/* ============ ANIMATIONS ============ */
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes twinkle{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.2)}}
+@keyframes flicker{0%,100%{transform:scaleY(1);opacity:.9}50%{transform:scaleY(1.2);opacity:1}}
+@keyframes winIn{from{opacity:0;transform:scale(.85) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes winOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(.85)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+.win.new{animation:winIn .35s cubic-bezier(.34,1.56,.64,1)}
+.win.closing{animation:winOut .25s ease forwards;pointer-events:none}
+.modal{animation:fadeIn .2s ease}
+.modal .modal-box{animation:slideUp .3s cubic-bezier(.34,1.56,.64,1)}
+
+/* ============ MODALS ============ */
+.modal-backdrop{position:fixed;inset:0;background:rgba(20,10,40,.45);backdrop-filter:blur(8px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn .2s}
+.modal-box{
+  background:var(--panel-solid);border-radius:24px;max-width:560px;width:100%;max-height:88vh;
+  box-shadow:0 30px 80px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.4),inset 0 1px 0 rgba(255,255,255,.6);
+  display:flex;flex-direction:column;overflow:hidden;border:1px solid rgba(255,255,255,.4);
+}
+.modal-box.wide{max-width:900px}
+.modal-head{padding:18px 22px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:var(--accent-text);display:flex;align-items:center;gap:10px;flex-shrink:0}
+.modal-head h2{font-size:16px;font-weight:800;flex:1}
+.modal-head .m-icon{font-size:22px}
+.modal-close{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:rgba(255,255,255,.25);font-size:16px;color:inherit;transition:.2s}
+.modal-close:hover{background:rgba(255,255,255,.5);transform:rotate(90deg)}
+.modal-body{padding:20px 22px;overflow-y:auto;flex:1}
+.modal-foot{padding:14px 22px;border-top:1px solid rgba(0,0,0,.08);display:flex;gap:8px;justify-content:flex-end;flex-shrink:0;background:rgba(0,0,0,.02)}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:11px;font-weight:800;margin-bottom:6px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.5px}
+.form-group input,.form-group select,.form-group textarea{
+  width:100%;padding:10px 12px;border-radius:11px;
+  border:2px solid rgba(0,0,0,.08);background:rgba(255,255,255,.7);
+  font-size:13px;transition:.2s;color:var(--text);
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--glow)}
+.form-row{display:flex;gap:8px;align-items:flex-end}
+.form-row .form-group{flex:1;margin-bottom:0}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{padding:9px 16px;border-radius:11px;font-size:12.5px;font-weight:800;transition:.2s;border:1px solid rgba(0,0,0,.06);background:rgba(255,255,255,.8)}
+.btn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.12)}
+.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:var(--accent-text);border-color:transparent;box-shadow:0 4px 14px var(--glow)}
+.btn.danger{background:#ff5a7a;color:#fff}
+.btn.ghost{background:transparent;border:2px solid rgba(0,0,0,.1)}
+.btn.sm{padding:6px 11px;font-size:11px;border-radius:9px}
+.mini-input{padding:6px 10px;border-radius:8px;border:2px solid rgba(0,0,0,.08);background:rgba(255,255,255,.7);font-size:12px;width:100%}
+.range-row{display:flex;align-items:center;gap:10px;margin-top:6px}
+.range-row input[type=range]{flex:1;accent-color:var(--accent)}
+.range-val{font-size:11px;font-weight:800;min-width:50px;text-align:right;color:var(--accent)}
+
+/* Gallery */
+.gallery-grid{display:grid;gap:12px}
+.theme-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.frame-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.theme-card,.frame-card{
+  border-radius:16px;overflow:hidden;cursor:pointer;position:relative;
+  background:rgba(255,255,255,.5);border:2px solid transparent;transition:.25s;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+.theme-card:hover,.frame-card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,.15);border-color:var(--accent)}
+.theme-card.active,.frame-card.active{border-color:var(--accent);box-shadow:0 0 0 3px var(--glow),0 8px 20px var(--glow)}
+.theme-preview{height:80px;position:relative;overflow:hidden}
+.theme-preview-inner{position:absolute;inset:0}
+.theme-preview .mini-win{position:absolute;right:6px;bottom:6px;width:50px;height:36px;background:rgba(255,255,255,.9);border-radius:5px;box-shadow:0 2px 6px rgba(0,0,0,.15);border:1px solid rgba(0,0,0,.08)}
+.theme-preview .mini-win::before{content:"";position:absolute;top:0;left:0;right:0;height:8px;background:var(--mini-title,#ccc);border-radius:4px 4px 0 0}
+.theme-card .card-label{padding:8px 10px;font-size:11.5px;font-weight:800;text-align:center;background:rgba(255,255,255,.8);color:#333}
+.theme-card.active .card-label{background:var(--accent);color:var(--accent-text)}
+.frame-card .frame-preview{padding:22px 14px 10px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.3);height:120px;position:relative;overflow:visible}
+.frame-card .mini-frame{
+  width:80px;height:50px;position:relative;background:#fff;border-radius:8px;
+  display:flex;flex-direction:column;overflow:visible;
+}
+.frame-card .mini-frame .mf-tb{height:10px;border-radius:6px 6px 0 0;background:var(--accent);flex-shrink:0}
+.frame-card .mini-frame .mf-body{flex:1;background:#fff;border-radius:0 0 6px 6px;border:1px solid rgba(0,0,0,.06);border-top:none}
+.frame-card .card-label{padding:6px 8px;font-size:10.5px;font-weight:800;text-align:center;background:rgba(255,255,255,.8);color:#333}
+.frame-card.active .card-label{background:var(--accent);color:var(--accent-text)}
+.frame-card .fav-btn{position:absolute;top:4px;right:4px;font-size:14px;opacity:.5;z-index:5;background:none;border:none}
+.frame-card .fav-btn:hover,.frame-card .fav-btn.active{opacity:1;transform:scale(1.2)}
+.search-row{display:flex;gap:8px;margin-bottom:14px}
+.search-row input{flex:1}
+.filter-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.chip{padding:5px 12px;border-radius:20px;font-size:11px;font-weight:800;background:rgba(255,255,255,.6);border:1px solid rgba(0,0,0,.08);transition:.2s;cursor:pointer}
+.chip:hover{background:var(--accent-2)}
+.chip.active{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:var(--accent-text);border-color:transparent;box-shadow:0 3px 10px var(--glow)}
+.pagination{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:16px;font-size:12px;font-weight:800}
+.pagination button{padding:6px 12px;border-radius:8px;background:rgba(0,0,0,.05)}
+.pagination button:hover:not(:disabled){background:var(--accent);color:var(--accent-text)}
+.pagination button:disabled{opacity:.3;cursor:not-allowed}
+
+/* Mode Center */
+.mode-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.mode-card{
+  background:rgba(255,255,255,.6);border-radius:16px;padding:14px;border:2px solid transparent;
+  cursor:pointer;transition:.2s;box-shadow:0 4px 12px rgba(0,0,0,.05);display:flex;flex-direction:column;gap:6px;
+}
+.mode-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.1);border-color:var(--accent-2)}
+.mode-card.active{border-color:var(--accent);background:rgba(255,255,255,.9);box-shadow:0 0 0 3px var(--glow)}
+.mode-card .mc-icon{font-size:24px}
+.mode-card .mc-name{font-size:13px;font-weight:800}
+.mode-card .mc-desc{font-size:11px;color:var(--text-dim);line-height:1.3;flex:1}
+.mode-card .mc-status{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;align-self:flex-start;padding:2px 8px;border-radius:8px;background:rgba(0,0,0,.05)}
+.mode-card.active .mc-status{background:var(--accent);color:var(--accent-text)}
+
+/* Widgets (Pomodoro, Notes, etc) */
+.floating-widget{
+  position:fixed;bottom:20px;right:20px;z-index:500;
+  background:var(--panel-solid);border-radius:20px;padding:16px;width:300px;
+  box-shadow:0 20px 50px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.4);
+  display:none;flex-direction:column;gap:12px;border:2px solid var(--accent);
+}
+.floating-widget.show{display:flex;animation:slideUp .3s}
+.fw-header{display:flex;align-items:center;justify-content:space-between}
+.fw-title{font-size:14px;font-weight:800;color:var(--accent)}
+.fw-close{width:24px;height:24px;border-radius:6px;background:rgba(0,0,0,.05);font-weight:800}
+.fw-timer{font-size:36px;font-weight:800;text-align:center;font-family:monospace;color:var(--text)}
+.fw-notes textarea{width:100%;height:150px;border-radius:10px;padding:8px;border:1px solid rgba(0,0,0,.1);background:rgba(255,255,255,.8);resize:none;font-size:12px}
+.fw-task-list{display:flex;flex-direction:column;gap:6px;max-height:200px;overflow-y:auto}
+.fw-task{display:flex;align-items:center;gap:8px;padding:6px;background:rgba(255,255,255,.6);border-radius:8px;font-size:12px}
+.fw-task input[type=checkbox]{width:16px;height:16px;accent-color:var(--accent)}
+
+/* Window Manager */
+.wm-list{display:flex;flex-direction:column;gap:8px}
+.wm-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.5);border:1px solid rgba(0,0,0,.06);transition:.2s}
+.wm-item:hover{background:rgba(255,255,255,.9);transform:translateX(2px)}
+.wm-item .wm-check{width:18px;height:18px;accent-color:var(--accent);flex-shrink:0}
+.wm-item .wm-info{flex:1;min-width:0}
+.wm-item .wm-name{font-size:13px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wm-item .wm-url{font-size:10.5px;color:var(--text-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wm-item .wm-meta{font-size:10px;color:var(--text-dim);text-align:right;flex-shrink:0}
+.wm-item .wm-actions{display:flex;gap:4px}
+.wm-item .wm-actions button{width:26px;height:26px;border-radius:7px;display:grid;place-items:center;font-size:12px;background:rgba(255,255,255,.7)}
+.wm-item .wm-actions button:hover{background:var(--accent);color:var(--accent-text)}
+
+/* toast */
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:2000;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none}
+.toast{padding:10px 20px;border-radius:14px;background:var(--panel-solid);color:var(--text);font-size:12.5px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.2),0 0 0 1px rgba(255,255,255,.4);animation:slideUp .3s, fadeIn .3s;border:1px solid var(--accent)}
+.toast.success{border-color:#4ac86a}
+.toast.error{border-color:#ff5a7a}
+
+/* right rail */
+#right-rail{
+  width:0;flex-shrink:0;transition:width .3s;overflow:hidden;
+  background:var(--panel);backdrop-filter:blur(20px);
+  border-radius:22px;border:1px solid rgba(255,255,255,.4);
+  display:flex;flex-direction:column;box-shadow:0 10px 40px rgba(0,0,0,.12);
+}
+#right-rail.open{width:70px}
+#right-rail .rail-btn{width:50px;height:50px;margin:6px auto;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:9px;font-weight:800;background:rgba(255,255,255,.5);transition:.2s}
+#right-rail .rail-btn:hover{background:var(--accent);color:var(--accent-text);transform:scale(1.08)}
+#right-rail .rail-btn svg{width:20px;height:20px}
+
+/* responsive */
+@media(max-width:900px){
+  #app{padding:6px;gap:6px}
+  #sidebar{width:66px;padding:10px 6px}
+  #sidebar .sb-label,#sidebar .sb-section-title,#sidebar .page-meta,#sidebar .sb-badge{display:none}
+  #logo-text{display:none}
+  #sidebar:not(.collapsed){width:66px}
+  .logo{padding:6px;justify-content:center}
+  .page-item{padding:8px;justify-content:center}
+  .sb-btn{padding:8px;justify-content:center}
+  #toolbar{padding:8px 10px;gap:5px}
+  .tb-btn{padding:7px;font-size:11px}
+  .tb-btn .tb-label{display:none}
+  #page-title-area h2{font-size:14px}
+  .win{min-width:180px}
+  #right-rail.open{width:60px}
+  #right-rail .rail-btn{width:44px;height:44px}
+}
+@media(max-width:600px){
+  #app{padding:4px;gap:4px}
+  #sidebar{width:54px;padding:6px 4px;border-radius:16px}
+  .logo svg{width:30px;height:30px}
+  .page-icon{font-size:15px;width:18px}
+  #toolbar{border-radius:16px;padding:6px 8px;min-height:52px;margin-bottom:6px}
+  #page-title-area{min-width:100px}
+  #page-title-area h2{font-size:13px}
+  #page-title-area .picon{font-size:18px}
+  #page-title-area .pstat{font-size:9.5px}
+  .tb-btn{padding:6px;border-radius:9px}
+  .tb-btn svg{width:14px;height:14px}
+  #workspace-wrap{border-radius:16px}
+  .modal-box{max-width:100%;border-radius:18px}
+  .modal-head{padding:14px 16px}
+  .modal-body{padding:14px 16px}
+  .theme-grid,.frame-grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}
+  .form-grid{grid-template-columns:1fr}
+  #right-rail.open{width:52px}
+  #right-rail .rail-btn{width:38px;height:38px;font-size:8px}
+  #right-rail .rail-btn svg{width:16px;height:16px}
+  .floating-widget{width:calc(100% - 20px);bottom:10px;right:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+body.reduce-motion *{animation:none!important;transition:none!important}
+</style>
+</head>
+<body>
+
+<div id="bg-deco"></div>
+<canvas id="particles"></canvas>
+
+<div id="app">
+  <!-- SIDEBAR -->
+  <aside id="sidebar">
+       <div class="logo">
+      <img src="logo.png" alt="Mochi Space Logo" class="logo-img">
+      <div id="logo-text">
+        <h1>Mochi Space</h1>
+        <p>5D WORKSPACE ✦</p>
+      </div>
+    </div>
+    <div class="sb-section-title">Workspaces</div>
+    <div id="pages-list"></div>
+    <button id="new-page-btn" class="sb-btn"><span style="font-size:16px">＋</span><span class="sb-label">New Page</span></button>
+    <div class="sb-bottom">
+      <button class="sb-btn" onclick="openThemeGallery()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+        <span class="sb-label">Themes</span><span class="sb-badge" id="theme-count-badge">20</span>
+      </button>
+      <button class="sb-btn" onclick="openFrameGallery()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 3v18"/></svg>
+        <span class="sb-label">Frames</span><span class="sb-badge">100</span>
+      </button>
+      <button class="sb-btn" onclick="openModeCenter()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <span class="sb-label">Modes</span><span class="sb-badge">30</span>
+      </button>
+      <button class="sb-btn" onclick="openWindowManager()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg>
+        <span class="sb-label">Windows</span><span class="sb-badge" id="win-count-badge">0</span>
+      </button>
+      <button class="sb-btn" onclick="openSettings()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span class="sb-label">Settings</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main id="main">
+    <header id="toolbar">
+      <div id="page-title-area">
+        <span class="picon" id="cur-page-icon">🌸</span>
+        <div style="min-width:0">
+          <h2 id="cur-page-name">Study Room</h2>
+          <div class="pstat"><span id="cur-page-stat">0 windows</span></div>
+        </div>
+      </div>
+      <button class="tb-btn primary" onclick="openAddWindow()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+        <span class="tb-label">Add New Window</span>
+      </button>
+      <button class="tb-btn" onclick="randomAllFrames()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+        <span class="tb-label">Random All</span>
+      </button>
+      <button class="tb-btn" onclick="arrangeWindows()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        <span class="tb-label">Arrange</span>
+      </button>
+      <button class="tb-btn" onclick="openModeCenter()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <span class="tb-label">Modes</span>
+      </button>
+      <button class="tb-btn" onclick="toggleRail()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+        <span class="tb-label">Tools</span>
+      </button>
+    </header>
+
+    <div id="workspace-wrap">
+      <div id="workspace"></div>
+    </div>
+  </main>
+
+  <!-- RIGHT RAIL -->
+  <aside id="right-rail">
+    <button class="rail-btn" onclick="openThemeGallery()" title="Theme Gallery">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+      <span>Theme</span>
+    </button>
+    <button class="rail-btn" onclick="openFrameGallery()" title="Frame Gallery">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 3v18"/></svg>
+      <span>Frame</span>
+    </button>
+    <button class="rail-btn" onclick="openModeCenter()" title="Mode Center">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      <span>Modes</span>
+    </button>
+    <button class="rail-btn" onclick="toggleEffects()" title="Toggle Effects">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z"/></svg>
+      <span>FX</span>
+    </button>
+    <button class="rail-btn" onclick="openSettings()" title="Settings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+      <span>Config</span>
+    </button>
+  </aside>
+</div>
+
+<div id="toast"></div>
+<div id="modals"></div>
+
+<script>
+/* =========================================================
+   MOCHI SPACE 5D — APP LOGIC
+   ========================================================= */
+
+/* ---------- THEMES ---------- */
+const THEMES = [
+  {id:'pink-mochi', name:'Pink Mochi', emoji:'🍡', bg:'linear-gradient(135deg,#ffe0ef,#ffc4dd)', accent:'#ff7bb0'},
+  {id:'sakura', name:'Sakura Dream', emoji:'🌸', bg:'linear-gradient(135deg,#ffeaf1,#ffd0e0)', accent:'#ff8ab8'},
+  {id:'bunny', name:'Bunny Wonderland', emoji:'🐰', bg:'linear-gradient(135deg,#f4f0ff,#e0d8f5)', accent:'#b39bff'},
+  {id:'kitty', name:'Kitty Café', emoji:'🐱', bg:'linear-gradient(135deg,#fdf0e2,#f3d5b8)', accent:'#d99a5c'},
+  {id:'cloud', name:'Cloud Paradise', emoji:'☁️', bg:'linear-gradient(135deg,#e3f2ff,#bfe0ff)', accent:'#6fb4ff'},
+  {id:'strawberry', name:'Strawberry Milk', emoji:'🍓', bg:'linear-gradient(135deg,#ffe9ef,#ffc8d5)', accent:'#ff6b8a'},
+  {id:'angel', name:'Angel Heaven', emoji:'👼', bg:'linear-gradient(135deg,#fffbe8,#ffefc4)', accent:'#ffc93a'},
+  {id:'fairy', name:'Fairy Garden', emoji:'🧚', bg:'linear-gradient(135deg,#e8ffe9,#c4f0c8)', accent:'#59c97a'},
+  {id:'academy', name:'Magical Academy', emoji:'🔮', bg:'linear-gradient(135deg,#2a1a4a,#1a0f30)', accent:'#c490ff'},
+  {id:'galaxy', name:'Galaxy Princess', emoji:'🌌', bg:'linear-gradient(135deg,#1a0a2e,#0a0418)', accent:'#ff7ad9'},
+  {id:'mermaid', name:'Ocean Mermaid', emoji:'🧜', bg:'linear-gradient(135deg,#d8f5ff,#a8e0f5)', accent:'#2ab8d8'},
+  {id:'candy', name:'Candy Pop', emoji:'🍬', bg:'linear-gradient(135deg,#ffd9f0,#d0e5ff)', accent:'#ff6ab8'},
+  {id:'rainbow', name:'Pastel Rainbow', emoji:'🌈', bg:'linear-gradient(135deg,#ffeedd,#e0f0ff)', accent:'#ff8ab0'},
+  {id:'lavender', name:'Lavender Night', emoji:'🌙', bg:'linear-gradient(135deg,#2a1f4a,#1a0f30)', accent:'#b8a0ff'},
+  {id:'mint', name:'Mint Jelly', emoji:'🍃', bg:'linear-gradient(135deg,#e0fff5,#a8f0dc)', accent:'#3ad4a8'},
+  {id:'peach', name:'Peach Blossom', emoji:'🍑', bg:'linear-gradient(135deg,#ffeede,#ffd4b8)', accent:'#ffa070'},
+  {id:'snow', name:'Snow Bunny', emoji:'❄️', bg:'linear-gradient(135deg,#f0f8ff,#d8e8f5)', accent:'#6ab8e8'},
+  {id:'cyber', name:'Cyber Kawaii', emoji:'⚡', bg:'linear-gradient(135deg,#0a0a1a,#050510)', accent:'#00f0ff'},
+  {id:'aquarium', name:'Dreamy Aquarium', emoji:'🪼', bg:'linear-gradient(135deg,#0a1a3a,#051028)', accent:'#40d0ff'},
+  {id:'royal', name:'Royal Princess', emoji:'👑', bg:'linear-gradient(135deg,#2a1050,#1a0838)', accent:'#ffd070'}
+];
+
+/* ---------- 100 FRAMES ---------- */
+const FRAMES = [
+  // Old 1-50
+  {id:'mochi', name:'Mochi', group:'Candy', isNew:false},
+  {id:'cat', name:'Cat Ears', group:'Animal', isNew:false},
+  {id:'bunny', name:'Bunny Ears', group:'Animal', isNew:false},
+  {id:'cloud', name:'Cloud', group:'Nature', isNew:false},
+  {id:'lace', name:'Lace', group:'Royal', isNew:false},
+  {id:'crystal', name:'Crystal', group:'Crystal', isNew:false},
+  {id:'angel', name:'Angel Wings', group:'Fairy', isNew:false},
+  {id:'sakura', name:'Sakura', group:'Nature', isNew:false},
+  {id:'strawberry', name:'Strawberry', group:'Nature', isNew:false},
+  {id:'cake', name:'Cake', group:'Candy', isNew:false},
+  {id:'shooting-star', name:'Shooting Star', group:'Space', isNew:false},
+  {id:'moon', name:'Moon', group:'Space', isNew:false},
+  {id:'ocean', name:'Ocean', group:'Nature', isNew:false},
+  {id:'coral', name:'Coral', group:'Nature', isNew:false},
+  {id:'butterfly', name:'Butterfly', group:'Fairy', isNew:false},
+  {id:'castle', name:'Castle', group:'Royal', isNew:false},
+  {id:'stained-glass', name:'Stained Glass', group:'Crystal', isNew:false},
+  {id:'sticker', name:'Sticker', group:'Candy', isNew:false},
+  {id:'pixel', name:'Pixel', group:'Neon', isNew:false},
+  {id:'neon', name:'Neon Cyber', group:'Neon', isNew:false},
+  {id:'holo', name:'Holographic', group:'Crystal', isNew:false},
+  {id:'glass', name:'Glass', group:'Crystal', isNew:false},
+  {id:'knit', name:'Knit', group:'Candy', isNew:false},
+  {id:'wood', name:'Wood', group:'Nature', isNew:false},
+  {id:'ice', name:'Ice', group:'Crystal', isNew:false},
+  {id:'magic-fire', name:'Magic Fire', group:'Neon', isNew:false},
+  {id:'lollipop', name:'Lollipop', group:'Candy', isNew:false},
+  {id:'chocolate', name:'Chocolate', group:'Candy', isNew:false},
+  {id:'macaron', name:'Macaron', group:'Candy', isNew:false},
+  {id:'tulip', name:'Tulip', group:'Nature', isNew:false},
+  {id:'vine', name:'Vine', group:'Nature', isNew:false},
+  {id:'crown', name:'Crown', group:'Royal', isNew:false},
+  {id:'heart', name:'Heart', group:'Fairy', isNew:false},
+  {id:'pearl', name:'Pearl', group:'Royal', isNew:false},
+  {id:'galaxy', name:'Galaxy', group:'Space', isNew:false},
+  {id:'planet', name:'Planet', group:'Space', isNew:false},
+  {id:'bubble', name:'Bubble', group:'Nature', isNew:false},
+  {id:'gift', name:'Gift', group:'Candy', isNew:false},
+  {id:'notebook', name:'Notebook', group:'Nature', isNew:false},
+  {id:'cassette', name:'Cassette', group:'Neon', isNew:false},
+  {id:'gameboy', name:'Gameboy', group:'Neon', isNew:false},
+  {id:'polaroid', name:'Polaroid', group:'Crystal', isNew:false},
+  {id:'sticker-stack', name:'Sticker Stack', group:'Candy', isNew:false},
+  {id:'anime-badge', name:'Anime Badge', group:'Fairy', isNew:false},
+  {id:'sunset', name:'Sunset', group:'Nature', isNew:false},
+  {id:'rainbow', name:'Rainbow', group:'Candy', isNew:false},
+  {id:'amethyst', name:'Amethyst', group:'Crystal', isNew:false},
+  {id:'fairy-garden', name:'Fairy Garden', group:'Fairy', isNew:false},
+  {id:'ice-palace', name:'Ice Palace', group:'Crystal', isNew:false},
+  {id:'mochi-royal', name:'Mochi Royal', group:'Royal', isNew:false},
+  
+  // New 51-100
+  {id:'frame_051', name:'Moonlit Observatory', group:'Fantasy', isNew:true},
+  {id:'frame_052', name:'Crystal Spellbook', group:'Fantasy', isNew:true},
+  {id:'frame_053', name:'Dragon Guardian', group:'Fantasy', isNew:true},
+  {id:'frame_054', name:'Magic Portal', group:'Fantasy', isNew:true},
+  {id:'frame_055', name:'Enchanted Hourglass', group:'Fantasy', isNew:true},
+  {id:'frame_056', name:'Celestial Compass', group:'Fantasy', isNew:true},
+  {id:'frame_057', name:'Witch Hat Atelier', group:'Fantasy', isNew:true},
+  {id:'frame_058', name:'Potion Laboratory', group:'Fantasy', isNew:true},
+  {id:'frame_059', name:'Phoenix Wings', group:'Fantasy', isNew:true},
+  {id:'frame_060', name:'Runic Sanctuary', group:'Fantasy', isNew:true},
+  {id:'frame_061', name:'Fox Spirit', group:'Animal', isNew:true},
+  {id:'frame_062', name:'Panda Bamboo', group:'Animal', isNew:true},
+  {id:'frame_063', name:'Hamster Bakery', group:'Animal', isNew:true},
+  {id:'frame_064', name:'Penguin Iceberg', group:'Animal', isNew:true},
+  {id:'frame_065', name:'Capybara Onsen', group:'Animal', isNew:true},
+  {id:'frame_066', name:'Jellyfish Ballet', group:'Animal', isNew:true},
+  {id:'frame_067', name:'Axolotl Lagoon', group:'Animal', isNew:true},
+  {id:'frame_068', name:'Hedgehog Garden', group:'Animal', isNew:true},
+  {id:'frame_069', name:'Deer Antlers', group:'Animal', isNew:true},
+  {id:'frame_070', name:'Little Dino Park', group:'Animal', isNew:true},
+  {id:'frame_071', name:'Glass Greenhouse', group:'Nature', isNew:true},
+  {id:'frame_072', name:'Mushroom Village', group:'Nature', isNew:true},
+  {id:'frame_073', name:'Ivy Archway', group:'Nature', isNew:true},
+  {id:'frame_074', name:'Botanical Herbarium', group:'Nature', isNew:true},
+  {id:'frame_075', name:'Waterfall Cascade', group:'Nature', isNew:true},
+  {id:'frame_076', name:'Coral Reef Crown', group:'Nature', isNew:true},
+  {id:'frame_077', name:'Lotus Pond', group:'Nature', isNew:true},
+  {id:'frame_078', name:'Autumn Maple', group:'Nature', isNew:true},
+  {id:'frame_079', name:'Desert Mirage', group:'Nature', isNew:true},
+  {id:'frame_080', name:'Aurora Borealis', group:'Nature', isNew:true},
+  {id:'frame_081', name:'Pearl Ribbon Couture', group:'Fashion', isNew:true},
+  {id:'frame_082', name:'Velvet Jewel Box', group:'Fashion', isNew:true},
+  {id:'frame_083', name:'Quilted Pastel', group:'Fashion', isNew:true},
+  {id:'frame_084', name:'Origami Crane', group:'Fashion', isNew:true},
+  {id:'frame_085', name:'Porcelain Dollhouse', group:'Fashion', isNew:true},
+  {id:'frame_086', name:'Embroidery Hoop', group:'Fashion', isNew:true},
+  {id:'frame_087', name:'Glass Mosaic', group:'Fashion', isNew:true},
+  {id:'frame_088', name:'Liquid Chrome', group:'Fashion', isNew:true},
+  {id:'frame_089', name:'Marble Veins', group:'Fashion', isNew:true},
+  {id:'frame_090', name:'Prismatic Prism', group:'Fashion', isNew:true},
+  {id:'frame_091', name:'Hologram HUD', group:'Tech', isNew:true},
+  {id:'frame_092', name:'Pixel Arcade Cabinet', group:'Tech', isNew:true},
+  {id:'frame_093', name:'Retro Computer Terminal', group:'Tech', isNew:true},
+  {id:'frame_094', name:'Mecha Armor', group:'Tech', isNew:true},
+  {id:'frame_095', name:'Neon Circuit Garden', group:'Tech', isNew:true},
+  {id:'frame_096', name:'Saturn Ring', group:'Space', isNew:true},
+  {id:'frame_097', name:'Comet Trail', group:'Space', isNew:true},
+  {id:'frame_098', name:'Black Hole Halo', group:'Space', isNew:true},
+  {id:'frame_099', name:'Origami Space Station', group:'Space', isNew:true},
+  {id:'frame_100', name:'Dream Architect', group:'Space', isNew:true}
+];
+
+/* ---------- 30 MODES ---------- */
+const MODES = [
+  {id:'m01', name:'Free Space', icon:'🖐', desc:'Tự do kéo thả cửa sổ.', group:'Layout'},
+  {id:'m02', name:'Smart Grid', icon:'⚏', desc:'Tự động sắp xếp thành lưới.', group:'Layout'},
+  {id:'m03', name:'Masonry', icon:'🧱', desc:'Sắp xếp so le kiểu Pinterest.', group:'Layout'},
+  {id:'m04', name:'Split Screen', icon:'⬓', desc:'Chia workspace thành các vùng.', group:'Layout'},
+  {id:'m05', name:'Focus Window', icon:'🎯', desc:'Tập trung vào một cửa sổ chính.', group:'Layout'},
+  {id:'m06', name:'Picture-in-Picture', icon:'📺', desc:'Cửa sổ nổi nhỏ trên cùng.', group:'Layout'},
+  {id:'m07', name:'Floating Windows', icon:'🎈', desc:'Cửa sổ nổi 3D.', group:'Layout'},
+  {id:'m08', name:'Minimal', icon:'◻', desc:'Ẩn thanh công cụ, tối đa không gian.', group:'Layout'},
+  {id:'m09', name:'Window Stack', icon:'🗂', desc:'Xếp cửa sổ thành chồng.', group:'Layout'},
+  {id:'m10', name:'Infinite Canvas', icon:'♾', desc:'Workspace vô tận, tự do cuộn.', group:'Layout'},
+  {id:'m11', name:'Study Room', icon:'📚', desc:'Tối ưu cho việc học tập.', group:'Work'},
+  {id:'m12', name:'Coding Lab', icon:'💻', desc:'Bố cục cho lập trình viên.', group:'Work'},
+  {id:'m13', name:'Research Desk', icon:'🔬', desc:'Nhiều nguồn tài liệu.', group:'Work'},
+  {id:'m14', name:'Reading Mode', icon:'📖', desc:'Ưu tiên nội dung chữ.', group:'Work'},
+  {id:'m15', name:'Pomodoro Space', icon:'⏱', desc:'Đồng hồ tập trung Pomodoro.', group:'Work'},
+  {id:'m16', name:'Split Study', icon:'📑', desc:'Chia khu vực học và tra cứu.', group:'Work'},
+  {id:'m17', name:'Exam Mode', icon:'✍', desc:'Tối giản, hạn chế xao nhãng.', group:'Work'},
+  {id:'m18', name:'Night Study', icon:'🌙', desc:'Giao diện tối, giảm độ sáng.', group:'Work'},
+  {id:'m19', name:'Task Board', icon:'✅', desc:'Bảng công việc To Do / Doing / Done.', group:'Work'},
+  {id:'m20', name:'Notes & Web', icon:'📝', desc:'Ghi chú song song với website.', group:'Work'},
+  {id:'m21', name:'Anime Room', icon:'🌸', desc:'Không gian anime dễ thương.', group:'Fun'},
+  {id:'m22', name:'Aquarium Space', icon:'🐠', desc:'Nền thủy cung và bong bóng.', group:'Fun'},
+  {id:'m23', name:'Dream Galaxy', icon:'🌌', desc:'Vũ trụ kawaii, sao lấp lánh.', group:'Fun'},
+  {id:'m24', name:'Candy Land', icon:'🍭', desc:'Thế giới kẹo ngọt pastel.', group:'Fun'},
+  {id:'m25', name:'Royal Palace', icon:'👑', desc:'Cung điện công chúa sang trọng.', group:'Fun'},
+  {id:'m26', name:'Cozy Café', icon:'☕', desc:'Quán cà phê ấm áp.', group:'Fun'},
+  {id:'m27', name:'Seasonal World', icon:'🍁', desc:'Thay đổi theo mùa.', group:'Fun'},
+  {id:'m28', name:'Live Wall', icon:'✨', desc:'Nền động, hạt sáng lung linh.', group:'Fun'},
+  {id:'m29', name:'Photo Gallery', icon:'🖼', desc:'Trưng bày hình nền yêu thích.', group:'Fun'},
+  {id:'m30', name:'Custom Creator', icon:'🎨', desc:'Tự phối hợp bố cục và hiệu ứng.', group:'Fun'}
+];
+
+/* ---------- STATE ---------- */
+const DEFAULT_PAGES = [
+  {id:'p_home', name:'Study Room', icon:'🌸', color:'#ff7bb0', theme:'pink-mochi', mode:'m01', windows:[]},
+  {id:'p_code', name:'Coding Room', icon:'💻', color:'#b39bff', theme:'bunny', mode:'m01', windows:[]},
+  {id:'p_play', name:'Entertainment', icon:'🎮', color:'#6fb4ff', theme:'cloud', mode:'m01', windows:[]},
+  {id:'p_me', name:'Personal Space', icon:'💖', color:'#ff6b8a', theme:'strawberry', mode:'m01', windows:[]}
+];
+
+let state = {
+  version: 2,
+  activePageId: 'p_home',
+  pages: JSON.parse(JSON.stringify(DEFAULT_PAGES)),
+  settings: { effects: true, reduceMotion: false },
+  favorites: [],
+  maxZ: 10,
+  maxPinZ: 100000
+};
+
+let windowEls = new Map();
+let selectedWindowId = null;
+let zCounter = 10;
+let tempFrameSelection = null;
+
+// Frame Gallery State
+let fgState = {
+  page: 1,
+  perPage: 24,
+  filterGroup: 'All',
+  filterType: 'All', // All, Old, New, Fav
+  search: ''
+};
+
+const STORAGE_KEY = 'mochi-space-5d-state-v2';
+
+/* ---------- UTILS ---------- */
+function uid(p='id'){ return p+'_'+Math.random().toString(36).slice(2,10); }
+function qs(s,r=document){ return r.querySelector(s); }
+function qsa(s,r=document){ return [...r.querySelectorAll(s)]; }
+function esc(s){ return String(s??'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function save(){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){ console.warn('Save failed',e); } }
+function load(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw) return false;
+    const s = JSON.parse(raw);
+    if(!s || !Array.isArray(s.pages)) return false;
+    state = Object.assign(state, s);
+    // Migration check
+    state.pages.forEach(p => {
+      if(!p.mode) p.mode = 'm01';
+      p.windows.forEach(w => {
+        if(!FRAMES.find(f=>f.id===w.frame)) w.frame = 'mochi';
+      });
+    });
+    if(!state.pages.find(p=>p.id===state.activePageId)) state.activePageId = state.pages[0].id;
+    return true;
+  }catch(e){ console.warn('Load failed',e); return false; }
+}
+function toast(msg, type=''){
+  const t = document.createElement('div');
+  t.className = 'toast '+type;
+  t.textContent = msg;
+  qs('#toast').appendChild(t);
+  setTimeout(()=>{ t.style.opacity='0'; t.style.transition='.3s'; setTimeout(()=>t.remove(),300); }, 2200);
+}
+function getPage(){ return state.pages.find(p=>p.id===state.activePageId) || state.pages[0]; }
+
+/* ---------- VALIDATE URL ---------- */
+function normalizeUrl(raw){
+  let u = String(raw||'').trim();
+  if(!u) return null;
+  if(/^https?:\/\//i.test(u)) { /* ok */ }
+  else if(/^[a-z]+:/i.test(u)) { return null; }
+  else u = 'https://'+u;
+  try{
+    const parsed = new URL(u);
+    if(!['http:','https:'].includes(parsed.protocol)) return null;
+    return parsed.href;
+  }catch(e){ return null; }
+}
+function urlHost(u){ try{ return new URL(u).hostname; }catch(e){ return u; } }
+
+/* ---------- RENDER: PAGES ---------- */
+function renderPages(){
+  const list = qs('#pages-list');
+  list.innerHTML = '';
+  state.pages.forEach((p, i) => {
+    const el = document.createElement('div');
+    el.className = 'page-item' + (p.id===state.activePageId?' active':'');
+    el.draggable = true;
+    el.dataset.pageId = p.id;
+    el.innerHTML = `
+      <span class="page-icon">${esc(p.icon||'📄')}</span>
+      <div class="page-meta">
+        <div class="page-name">${esc(p.name)}</div>
+        <div class="page-sub">${p.windows.length} cửa sổ</div>
+      </div>
+      <div class="page-actions">
+        <button title="Đổi tên" data-act="rename">✎</button>
+        <button title="Nhân bản" data-act="dup">⧉</button>
+        <button title="Xóa" data-act="del">✕</button>
+      </div>
+    `;
+    el.addEventListener('click', (ev) => {
+      const act = ev.target.closest('button')?.dataset.act;
+      if(act==='rename'){ ev.stopPropagation(); renamePage(p.id); return; }
+      if(act==='dup'){ ev.stopPropagation(); duplicatePage(p.id); return; }
+      if(act==='del'){ ev.stopPropagation(); deletePage(p.id); return; }
+      switchPage(p.id);
+    });
+    el.addEventListener('dragstart', e=>{
+      e.dataTransfer.setData('text/plain', p.id);
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    el.addEventListener('dragover', e=>{ e.preventDefault(); el.style.borderTop = '2px solid var(--accent)'; });
+    el.addEventListener('dragleave', ()=>{ el.style.borderTop=''; });
+    el.addEventListener('drop', e=>{
+      e.preventDefault(); el.style.borderTop='';
+      const src = e.dataTransfer.getData('text/plain');
+      if(!src || src===p.id) return;
+      const fromIdx = state.pages.findIndex(x=>x.id===src);
+      const toIdx = state.pages.findIndex(x=>x.id===p.id);
+      if(fromIdx<0||toIdx<0) return;
+      const [m] = state.pages.splice(fromIdx,1);
+      state.pages.splice(toIdx,0,m);
+      save(); renderPages();
+    });
+    list.appendChild(el);
+  });
+  const page = getPage();
+  qs('#win-count-badge').textContent = page ? page.windows.length : 0;
+}
+
+/* ---------- RENDER: PAGE HEADER ---------- */
+function renderPageHeader(){
+  const p = getPage();
+  qs('#cur-page-icon').textContent = p.icon || '📄';
+  qs('#cur-page-name').textContent = p.name;
+  qs('#cur-page-stat').textContent = `${p.windows.length} cửa sổ • ${p.windows.filter(w=>!w.minimized).length} đang hoạt động`;
+  document.body.dataset.theme = p.theme || 'pink-mochi';
+}
+
+/* ---------- WORKSPACE ---------- */
+function renderWorkspace(){
+  const ws = qs('#workspace');
+  const oldEmpty = ws.querySelector('.empty-state');
+  if(oldEmpty) oldEmpty.remove();
+  
+  const page = getPage();
+  
+  // Apply Mode layout
+  applyModeLayout(page.mode, false);
+
+  // Sync visible windows
+  state.pages.forEach(p=>{
+    p.windows.forEach(w=>{
+      let el = windowEls.get(w.id);
+      if(!el){
+        el = createWindowEl(w, p.id);
+        ws.appendChild(el);
+        windowEls.set(w.id, el);
+      } else if(el.parentElement !== ws) {
+        ws.appendChild(el);
+      }
+      el.style.display = (p.id===page.id) ? '' : 'none';
+    });
+  });
+  
+  const validIds = new Set();
+  state.pages.forEach(p=>p.windows.forEach(w=>validIds.add(w.id)));
+  for(const [id, el] of windowEls){
+    if(!validIds.has(id)){ el.remove(); windowEls.delete(id); }
+  }
+  
+  if(page.windows.length===0){
+    ws.insertAdjacentHTML('beforeend', `
+      <div class="empty-state">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="32" cy="38" rx="22" ry="20" fill="none" stroke="currentColor" stroke-width="2" opacity=".5"/>
+          <ellipse cx="24" cy="36" rx="2.5" ry="3.5" fill="currentColor" opacity=".6"/>
+          <ellipse cx="40" cy="36" rx="2.5" ry="3.5" fill="currentColor" opacity=".6"/>
+          <path d="M27 46 Q32 50 37 46" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".6"/>
+        </svg>
+        <h3>Workspace đang trống ✨</h3>
+        <p>Nhấn <b>＋ Add New Window</b> để thêm cửa sổ đầu tiên vào không gian của bạn.</p>
+        <div class="hint">💡 Mẹo: bạn có thể dán bất kỳ URL nào — nếu website chặn iframe, hãy dùng nút mở tab mới.</div>
+      </div>
+    `);
+  }
+  renderPages();
+  renderPageHeader();
+}
+
+/* ---------- CREATE WINDOW ELEMENT ---------- */
+function createWindowEl(w, pageId){
+  const el = document.createElement('div');
+  el.className = 'win';
+  el.dataset.winId = w.id;
+  el.dataset.frame = w.frame;
+  el.style.left = w.x+'px';
+  el.style.top = w.y+'px';
+  el.style.width = w.w+'px';
+  el.style.height = w.h+'px';
+  el.style.zIndex = w.z;
+  if(w.minimized) el.classList.add('minimized');
+  if(w.maximized) el.classList.add('maximized');
+  if(w.pinned) el.classList.add('pinned');
+  el.innerHTML = `
+    <div class="win-inner">
+      <div class="win-titlebar">
+        <span class="win-favicon">🌐</span>
+        <div style="flex:1;min-width:0;position:relative;z-index:1">
+          <div class="win-title">${esc(w.name)}</div>
+          <div class="win-tb-sub">${esc(urlHost(w.url))}</div>
+        </div>
+        <div class="win-actions">
+          <button title="Đổi khung ngẫu nhiên" data-act="random-frame">🎲</button>
+          <button title="Chỉnh sửa URL" data-act="edit-url">✎</button>
+          <button title="Tải lại" data-act="reload">↻</button>
+          <button title="Ghim" data-act="pin">📌</button>
+          <button title="Nhân bản" data-act="dup">⧉</button>
+          <button title="Thu nhỏ" data-act="min">—</button>
+          <button title="Phóng to" data-act="max">□</button>
+          <button title="Mở tab mới" data-act="ext">↗</button>
+          <button title="Đóng" data-act="close" class="close">✕</button>
+        </div>
+      </div>
+      <div class="win-body"></div>
+      <div class="win-tb-bottom">
+        <span class="url-text">${esc(w.url)}</span>
+        <button data-act="settings">⚙ Cài đặt</button>
+        <button data-act="open-ext">Mở tab mới ↗</button>
+      </div>
+    </div>
+    <div class="rh n"></div><div class="rh s"></div><div class="rh w"></div><div class="rh e"></div>
+    <div class="rh nw"></div><div class="rh ne"></div><div class="rh sw"></div><div class="rh se"></div>
+  `;
+  loadIframeInto(el.querySelector('.win-body'), w.url);
+  wireWindowEvents(el, w.id);
+  return el;
+}
+
+function loadIframeInto(bodyEl, url){
+  bodyEl.innerHTML = '';
+  if(!url){
+    bodyEl.innerHTML = `<div class="win-placeholder"><div class="big-emoji">🌐</div><div>Chưa có URL</div></div>`;
+    return;
+  }
+  const iframe = document.createElement('iframe');
+  iframe.src = url;
+  iframe.loading = 'lazy';
+  iframe.referrerPolicy = 'no-referrer-when-downgrade';
+  iframe.allow = 'fullscreen; autoplay; clipboard-read; clipboard-write';
+  iframe.sandbox = 'allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals allow-downloads';
+  bodyEl.appendChild(iframe);
+}
+
+/* ---------- WINDOW EVENTS ---------- */
+function wireWindowEvents(el, winId){
+  el.addEventListener('mousedown', ()=>{
+    if(selectedWindowId !== winId){ selectWindow(winId); }
+  }, true);
+
+  el.querySelector('.win-titlebar').addEventListener('click', (e)=>{
+    const btn = e.target.closest('button');
+    if(!btn) return;
+    e.stopPropagation();
+    handleWindowAction(winId, btn.dataset.act);
+  });
+  el.querySelector('.win-tb-bottom').addEventListener('click', (e)=>{
+    const btn = e.target.closest('button');
+    if(!btn) return;
+    handleWindowAction(winId, btn.dataset.act);
+  });
+
+  const tb = el.querySelector('.win-titlebar');
+  tb.addEventListener('mousedown', (e)=>{
+    if(e.target.closest('button')) return;
+    if(e.button !== 0) return;
+    startDrag(e, el, winId);
+  });
+
+  el.querySelectorAll('.rh').forEach(h=>{
+    h.addEventListener('mousedown', (e)=>{
+      e.stopPropagation();
+      startResize(e, el, winId, h.classList[1]);
+    });
+  });
+}
+
+function handleWindowAction(winId, act){
+  const page = getPage();
+  const w = page.windows.find(x=>x.id===winId);
+  if(!w) return;
+  switch(act){
+    case 'random-frame': randomFrameWindow(winId); break;
+    case 'edit-url': editWindowUrl(winId); break;
+    case 'reload': reloadWindow(winId); break;
+    case 'pin': togglePin(winId); break;
+    case 'dup': duplicateWindow(winId); break;
+    case 'min': toggleMinimize(winId); break;
+    case 'max': toggleMaximize(winId); break;
+    case 'ext': case 'open-ext': window.open(w.url, '_blank', 'noopener,noreferrer'); break;
+    case 'close': closeWindow(winId); break;
+    case 'settings': openWindowSettings(winId); break;
+  }
+}
+
+/* ---------- SELECT / FOCUS ---------- */
+function selectWindow(winId){
+  selectedWindowId = winId;
+  const page = getPage();
+  const w = page.windows.find(x=>x.id===winId);
+  if(!w) return;
+  if(w.pinned){ state.maxPinZ++; w.z = state.maxPinZ; }
+  else { state.maxZ++; w.z = state.maxZ; }
+  
+  windowEls.forEach((el, id)=>{
+    const win = page.windows.find(x=>x.id===id);
+    if(!win) return;
+    el.style.zIndex = win.z;
+    el.classList.toggle('focused', id===winId);
+  });
+  save();
+}
+
+/* ---------- DRAG ---------- */
+let dragCtx = null;
+function startDrag(e, el, winId){
+  const page = getPage();
+  const w = page.windows.find(x=>x.id===winId);
+  if(!w) return;
+  if(w.maximized) return;
+  selectWindow(winId);
+  const wsRect = qs('#workspace').getBoundingClientRect();
+  dragCtx = {
+    el, winId,
+    startX: e.clientX, startY: e.clientY,
+    origX: w.x, origY: w.y,
+    wsRect
+  };
+  el.classList.add('dragging');
+  document.addEventListener('mousemove', onDrag);
+  document.addEventListener('mouseup', endDrag);
+  e.preventDefault();
+}
+function onDrag(e){
+  if(!dragCtx) return;
+  const {el, startX, startY, origX, origY} = dragCtx;
+  const dx = e.clientX - startX;
+  const dy = e.clientY - startY;
+  let nx = origX + dx;
+  let ny = origY + dy;
+  
+  // Infinite canvas allows moving anywhere within the 3000x3000 workspace
+  nx = Math.max(0, Math.min(nx, 3000 - el.offsetWidth));
+  ny = Math.max(0, Math.min(ny, 3000 - el.offsetHeight));
+  
+  el.style.left = nx+'px';
+  el.style.top = ny+'px';
+}
+function endDrag(){
+  if(!dragCtx) return;
+  const {el, winId} = dragCtx;
+  el.classList.remove('dragging');
+  const page = getPage();
+  const w = page.windows.find(x=>x.id===winId);
+  if(w){
+    w.x = parseFloat(el.style.left) || 0;
+    w.y = parseFloat(el.style.top) || 0;
+    save();
+  }
+  dragCtx = null;
+  document.removeEventListener('mousemove', onDrag);
+  document.removeEventListener('mouseup', endDrag);
+}
+
+/* ---------- RESIZE ---------- */
+let resizeCtx = null;
+function startResize(e, el, winId, dir){
+  const page = getPage();
+  const w = page.windows.find(x=>x.id===winId);
+  if(!w) return;
+  selectWindow(winId);
+  if(w.maximized){ return; }
+  resizeCtx = {
+    el, winId, dir,
+    startX: e.clientX, startY: e.clientY,
+    origX: w.x, origY: w.y, origW: w.w, origH: w.h
+  };
+  el.classList.add('resizing');
+  document.addEventListener('mousemove', onResize);
+  document.addEventListener('mouseup', endResize);
+  e.preventDefault();
+  e.stopPropagation();
+}
+function onResize(e){
+  if(!resizeCtx) return;
+  const {el, dir, startX, startY, origX, origY, origW, origH} = resizeCtx;
+  const dx = e.clientX - startX;
+  const dy = e.clientY - startY;
+  let x = origX, y = origY, w = origW, h = origH;
+  const MIN = 180;
+  if(dir.includes('e')) w = Math.max(MIN, origW + dx);
+  if(dir.includes('s')) h = Math.max(100, origH + dy);
+  if(dir.includes('w')){ const nw = Math.max(MIN, origW - dx); x = origX + (origW - nw); w = nw; }
+  if(dir.includes('n')){ const nh = Math.max(100, origH - dy); y = origY + (origH - nh); h = nh; }
+  el.style.left = x+'px';
+  el.style.top = y+'px';
+  el.style.width = w+'px';
+  el.style.height = h+'px';
+}
+function endResize(){
+  if(!resizeCtx) return;
+  const {el, winId} = resizeCtx;
+  el.classList.remove('resizing');
+  const page = getPage();
+  const w = page.windows.find(x=>x.id===winId);
+  if(w){
+    w.x = parseFloat(el.style.left)||0;
+    w.y = parseFloat(el.style.top)||0;
+    w.w = parseFloat(el.style.width)||300;
+    w.h = parseFloat(el.style.height)||200;
+    save();
+  }
+  resizeCtx = null;
+  document.removeEventListener('mousemove', onResize);
+  document.removeEventListener('mouseup', endResize);
+}
+
+/* ---------- WINDOW OPERATIONS ---------- */
+function addWindow(opts){
+  const page = getPage();
+  const frame = opts.frame || pickRandomFrame(page);
+  const newWin = {
+    id: uid('w'),
+    name: opts.name || 'New Window',
+    url: opts.url || 'https://example.com',
+    x: opts.x ?? (60 + Math.random()*120),
+    y: opts.y ?? (60 + Math.random()*80),
+    w: opts.w ?? 500,
+    h: opts.h ?? 380,
+    frame,
+    minimized: false,
+    maximized: false,
+    pinned: false,
+    z: ++state.maxZ
+  };
+  page.windows.push(newWin);
+  save();
+  renderWorkspace();
+  const el = windowEls.get(newWin.id);
+  if(el){ el.classList.add('new'); setTimeout(()=>el.classList.remove('new'), 400); }
+  selectWindow(newWin.id);
+  updateCounts();
+}
+function closeWindow(winId){
+  const page = getPage();
+  const idx = page.windows.findIndex(x=>x.id===winId);
+  if(idx<0) return;
+  const el = windowEls.get(winId);
+  if(el){ el.classList.add('closing'); setTimeout(()=>{ el.remove(); windowEls.delete(winId); }, 260); }
+  page.windows.splice(idx,1);
+  save();
+  renderPages();
+  renderPageHeader();
+  updateCounts();
+  setTimeout(renderWorkspace, 100);
+}
+function duplicateWindow(winId){
+  const page = getPage();
+  const w = page.windows.find(x=>x.id===winId);
+  if(!w) return;
+  const copy = {...w, id: uid('w'), x: w.x+30, y: w.y+30, z: ++state.maxZ, pinned: false};
+  page.windows.push(copy);
+  save();
+  renderWorkspace();
+}
+function togglePin(winId){
+  const page = getPage();
+  const w = page.windows.find(x=>x.id===winId);
+  if(!w) return;
+  w.pinned = !w.pinned;
+  if(w.pinned){ state.maxPinZ++; w.z = state.maxPinZ; }
+  else { state.maxZ++; w.z = state.maxZ; }
+  const el = windowEls.get(winId);
+  if(el){ el.classList.toggle('pinned', w.pinned); el.style.zIndex = w.z; }
+  save();
+  toast(w.pinned ? '📌 Đã ghim cửa sổ' : 'Đã bỏ ghim');
+}
+function toggleMinimize(winId){
+  const page = getPage();
+  const w = page.windows.find(x=>x.id===winId);
+  if(!w) return;
+  w.minimized = !w.minimized;
+  if(w.minimized) w.maximized = false;
+  const el = windowEls.get(winId);
+  if(el) el.classList.toggle('minimized', w.minimized);
+  if(w.minimized) el.classList.remove('maximized');
+  save();
+}
+function toggleMaximize(winId){
+  const page = getPage();
+  const w = page.windows.find(x=>x.id===winId);
+  if(!w) return;
+  w.maximized = !w.maximized;
+  if(w.maximized) w.minimized = false;
+  const el = windowEls.get(winId);
+  if(el){
+    el.classList.toggle('maximized', w.maximized);
+    if(w.maximized) el.classList.remove('minimized');
+  }
+  save();
+}
+function reloadWindow(winId){
+  const page = getPage();
+  const w = page.windows.find(x=>x.id===winId);
+  if(!w) return;
+  const el = windowEls.get(winId);
+  if(el) loadIframeInto(el.querySelector('.win-body'), w.url);
+  toast('🔄 Đã tải lại');
+}
+function randomFrameWindow(winId){
+  const page = getPage();
+  const w = page.windows.find(x=>x.id===winId);
+  if(!w) return;
+  w.frame = pickRandomFrame(page, winId);
+  const el = windowEls.get(winId);
+  if(el){ el.dataset.frame = w.frame; el.classList.add('new'); setTimeout(()=>el.classList.remove('new'), 400); }
+  save();
+  toast('🎲 Khung mới: '+FRAMES.find(f=>f.id===w.frame).name);
+}
+function randomAllFrames(){
+  const page = getPage();
+  if(page.windows.length===0){ toast('Chưa có cửa sổ nào'); return; }
+  const used = new Set();
+  page.windows.forEach(w=>{
+    let f = pickRandomFrame(page, w.id, used);
+    w.frame = f;
+    used.add(f);
+    const el = windowEls.get(w.id);
+    if(el) el.dataset.frame = f;
+  });
+  save();
+  toast('🎲 Đã đổi khung cho tất cả cửa sổ');
+}
+function pickRandomFrame(page, excludeId, extraExclude){
+  const used = new Set(extraExclude||[]);
+  page.windows.forEach(w=>{ if(w.id!==excludeId) used.add(w.frame); });
+  const pool = FRAMES.filter(f=>!used.has(f.id));
+  const arr = pool.length ? pool : FRAMES;
+  return arr[Math.floor(Math.random()*arr.length)].id;
+}
+function arrangeWindows(){
+  const page = getPage();
+  const ws = qs('#workspace');
+  const W = ws.clientWidth, H = ws.clientHeight;
+  const n = page.windows.length;
+  if(!n){ toast('Chưa có cửa sổ nào'); return; }
+  const cols = Math.ceil(Math.sqrt(n));
+  const rows = Math.ceil(n/cols);
+  const gap = 14;
+  const cw = (W - gap*(cols+1)) / cols;
+  const ch = (H - gap*(rows+1)) / rows;
+  page.windows.forEach((w, i)=>{
+    const c = i % cols, r = Math.floor(i/cols);
+    w.x = gap + c*(cw+gap);
+    w.y = gap + r*(ch+gap);
+    w.w = Math.max(200, cw);
+    w.h = Math.max(140, ch);
+    w.maximized = false; w.minimized = false;
+    const el = windowEls.get(w.id);
+    if(el){
+      el.style.left = w.x+'px';
+      el.style.top = w.y+'px';
+      el.style.width = w.w+'px';
+      el.style.height = w.h+'px';
+      el.classList.remove('maximized','minimized');
+    }
+  });
+  save();
+  toast('✨ Đã sắp xếp cửa sổ');
+}
+
+/* ---------- MODE ENGINE ---------- */
+function applyModeLayout(modeId, saveMode = true) {
+  const page = getPage();
+  if(saveMode) { page.mode = modeId; save(); }
+  
+  const ws = qs('#workspace');
+  const W = ws.clientWidth || 1200;
+  const H = ws.clientHeight || 800;
+  const n = page.windows.length;
+  if(n === 0) return;
+
+  // Reset default styles
+  page.windows.forEach(w => {
+    w.maximized = false;
+    w.minimized = false;
+    const el = windowEls.get(w.id);
+    if(el) { el.classList.remove('maximized','minimized'); el.style.transform = ''; el.style.opacity = '1'; el.style.filter = ''; }
+  });
+
+  if (modeId === 'm02') { // Smart Grid
+    const cols = Math.ceil(Math.sqrt(n));
+    const rows = Math.ceil(n/cols);
+    const gap = 14;
+    const cw = (W - gap*(cols+1)) / cols;
+    const ch = (H - gap*(rows+1)) / rows;
+    page.windows.forEach((w, i) => {
+      const c = i % cols, r = Math.floor(i/cols);
+      w.x = gap + c*(cw+gap); w.y = gap + r*(ch+gap);
+      w.w = Math.max(200, cw); w.h = Math.max(140, ch);
+    });
+  } else if (modeId === 'm03') { // Masonry
+    const cols = 3;
+    const gap = 14;
+    const cw = (W - gap*(cols+1)) / cols;
+    let colHeights = [gap, gap, gap];
+    page.windows.forEach((w) => {
+      const minCol = colHeights.indexOf(Math.min(...colHeights));
+      w.x = gap + minCol*(cw+gap);
+      w.y = colHeights[minCol];
+      w.w = cw;
+      w.h = 200 + Math.random()*200; // varying heights
+      colHeights[minCol] += w.h + gap;
+    });
+  } else if (modeId === 'm04') { // Split Screen
+    const cols = n === 1 ? 1 : (n === 2 ? 2 : (n <= 4 ? 2 : 3));
+    const rows = Math.ceil(n/cols);
+    const gap = 10;
+    const cw = (W - gap*(cols+1)) / cols;
+    const ch = (H - gap*(rows+1)) / rows;
+    page.windows.forEach((w, i) => {
+      const c = i % cols, r = Math.floor(i/cols);
+      w.x = gap + c*(cw+gap); w.y = gap + r*(ch+gap);
+      w.w = cw; w.h = ch;
+    });
+  } else if (modeId === 'm05') { // Focus Window
+    const mainW = page.windows[0];
+    mainW.x = 20; mainW.y = 20; mainW.w = W - 40; mainW.h = H - 40;
+    mainW.maximized = true;
+    page.windows.slice(1).forEach(w => {
+      w.x = W - 300; w.y = 20; w.w = 280; w.h = 200;
+      const el = windowEls.get(w.id);
+      if(el) el.style.opacity = '0.4';
+    });
+    const mainEl = windowEls.get(mainW.id);
+    if(mainEl) { mainEl.classList.add('maximized'); mainEl.style.opacity = '1'; }
+    return;
+  } else if (modeId === 'm06') { // PiP
+    page.windows.forEach((w, i) => {
+      if(i === n-1) { // last one is PiP
+        w.x = W - 350; w.y = H - 250; w.w = 320; w.h = 220;
+      } else {
+        w.x = 20 + i*30; w.y = 20 + i*30; w.w = 600; w.h = 400;
+      }
+    });
+  } else if (modeId === 'm07') { // Floating Windows
+    page.windows.forEach((w, i) => {
+      w.x = 50 + i*60; w.y = 50 + i*60; w.w = 480; w.h = 360;
+      const el = windowEls.get(w.id);
+      if(el) { el.style.transform = `rotate(${(Math.random()-0.5)*4}deg) translateZ(0)`; }
+    });
+  } else if (modeId === 'm09') { // Window Stack
+    page.windows.forEach((w, i) => {
+      w.x = 40 + i*20; w.y = 40 + i*20; w.w = 500; w.h = 380;
+      const el = windowEls.get(w.id);
+      if(el) { el.style.zIndex = i+1; }
+    });
+  } else if (modeId === 'm10') { // Infinite Canvas
+    // Already infinite by default, just arrange them nicely
+    page.windows.forEach((w, i) => {
+      w.x = 40 + (i % 4) * 520;
+      w.y = 40 + Math.floor(i / 4) * 420;
+      w.w = 480; w.h = 380;
+    });
+  } else {
+    // Free Space or other modes default
+    // If their positions are 0, spread them
+    page.windows.forEach((w, i) => {
+      if(w.x === 0 && w.y === 0) {
+        w.x = 60 + (i % 3) * 300;
+        w.y = 60 + Math.floor(i / 3) * 250;
+      }
+    });
+  }
+
+  // Apply positions
+  page.windows.forEach(w => {
+    const el = windowEls.get(w.id);
+    if(el) {
+      el.style.left = w.x + 'px';
+      el.style.top = w.y + 'px';
+      el.style.width = w.w + 'px';
+      el.style.height = w.h + 'px';
+      el.classList.remove('maximized','minimized');
+      el.style.opacity = '1';
+    }
+  });
+
+  // Toggle specific UI for modes
+  if (modeId === 'm08') { // Minimal
+    qs('#sidebar').classList.add('collapsed');
+    qs('#toolbar').style.opacity = '0.2';
+    qs('#toolbar').style.pointerEvents = 'none';
+  } else {
+    qs('#sidebar').classList.remove('collapsed');
+    qs('#toolbar').style.opacity = '1';
+    qs('#toolbar').style.pointerEvents = 'auto';
+  }
+
+  // Widgets
+  qsa('.floating-widget').forEach(el => el.classList.remove('show'));
+  if (modeId === 'm15') { // Pomodoro
+    let pw = qs('#widget-pomodoro');
+    if(!pw) { createPomodoroWidget(); pw = qs('#widget-pomodoro'); }
+    pw.classList.add('show');
+  } else if (modeId === 'm19') { // Task Board
+    let tw = qs('#widget-tasks');
+    if(!tw) { createTaskWidget(); tw = qs('#widget-tasks'); }
+    tw.classList.add('show');
+  } else if (modeId === 'm20') { // Notes
+    let nw = qs('#widget-notes');
+    if(!nw) { createNotesWidget(); nw = qs('#widget-notes'); }
+    nw.classList.add('show');
+  }
+}
+
+/* ---------- WIDGETS ---------- */
+function createPomodoroWidget() {
+  const el = document.createElement('div');
+  el.id = 'widget-pomodoro';
+  el.className = 'floating-widget';
+  el.innerHTML = `
+    <div class="fw-header"><div class="fw-title">⏱ Pomodoro</div><button class="fw-close" onclick="this.parentElement.parentElement.classList.remove('show')">✕</button></div>
+    <div class="fw-timer" id="pomo-time">25:00</div>
+    <div style="display:flex;gap:6px">
+      <button class="btn primary sm" style="flex:1" onclick="togglePomodoro()">Start / Pause</button>
+      <button class="btn sm" onclick="resetPomodoro()">Reset</button>
+    </div>
+  `;
+  document.body.appendChild(el);
+}
+let pomoInterval, pomoTime = 25*60, pomoRunning = false;
+function togglePomodoro() {
+  if(pomoRunning) { clearInterval(pomoInterval); }
+  else {
+    pomoInterval = setInterval(() => {
+      if(pomoTime > 0) { pomoTime--; updatePomoUI(); }
+      else { clearInterval(pomoInterval); toast('⏱ Hết giờ Pomodoro!'); pomoRunning=false; }
+    }, 1000);
+  }
+  pomoRunning = !pomoRunning;
+}
+function resetPomodoro() { clearInterval(pomoInterval); pomoRunning=false; pomoTime = 25*60; updatePomoUI(); }
+function updatePomoUI() {
+  const m = Math.floor(pomoTime/60).toString().padStart(2,'0');
+  const s = (pomoTime%60).toString().padStart(2,'0');
+  const el = qs('#pomo-time');
+  if(el) el.textContent = `${m}:${s}`;
+}
+
+function createNotesWidget() {
+  const el = document.createElement('div');
+  el.id = 'widget-notes';
+  el.className = 'floating-widget';
+  el.innerHTML = `
+    <div class="fw-header"><div class="fw-title">📝 Quick Notes</div><button class="fw-close" onclick="this.parentElement.parentElement.classList.remove('show')">✕</button></div>
+    <div class="fw-notes">
+      <textarea id="quick-notes" placeholder="Ghi chú nhanh..." oninput="localStorage.setItem('mochi-notes', this.value)"></textarea>
+    </div>
+  `;
+  document.body.appendChild(el);
+  setTimeout(()=>{ const ta = qs('#quick-notes'); if(ta) ta.value = localStorage.getItem('mochi-notes') || ''; }, 100);
+}
+
+function createTaskWidget() {
+  const el = document.createElement('div');
+  el.id = 'widget-tasks';
+  el.className = 'floating-widget';
+  el.innerHTML = `
+    <div class="fw-header"><div class="fw-title">✅ Task Board</div><button class="fw-close" onclick="this.parentElement.parentElement.classList.remove('show')">✕</button></div>
+    <div class="fw-task-list" id="task-list"></div>
+    <div style="display:flex;gap:4px;margin-top:6px">
+      <input type="text" id="new-task-input" class="mini-input" placeholder="Việc mới..." style="flex:1" onkeydown="if(event.key==='Enter')addTask()">
+      <button class="btn primary sm" onclick="addTask()">＋</button>
+    </div>
+  `;
+  document.body.appendChild(el);
+  renderTasks();
+}
+let tasks = JSON.parse(localStorage.getItem('mochi-tasks') || '[]');
+function renderTasks() {
+  const list = qs('#task-list');
+  if(!list) return;
+  list.innerHTML = tasks.map((t, i) => `
+    <div class="fw-task">
+      <input type="checkbox" ${t.done?'checked':''} onchange="toggleTask(${i})">
+      <span style="flex:1;text-decoration:${t.done?'line-through':'none'}">${esc(t.text)}</span>
+      <button style="color:#ff5a7a;font-weight:800" onclick="delTask(${i})">✕</button>
+    </div>
+  `).join('');
+}
+function addTask() {
+  const inp = qs('#new-task-input');
+  if(inp.value.trim()) {
+    tasks.push({text: inp.value.trim(), done: false});
+    inp.value = '';
+    localStorage.setItem('mochi-tasks', JSON.stringify(tasks));
+    renderTasks();
+  }
+}
+function toggleTask(i) {
+  tasks[i].done = !tasks[i].done;
+  localStorage.setItem('mochi-tasks', JSON.stringify(tasks));
+  renderTasks();
+}
+function delTask(i) {
+  tasks.splice(i, 1);
+  localStorage.setItem('mochi-tasks', JSON.stringify(tasks));
+  renderTasks();
+}
+
+/* ---------- MODE CENTER UI ---------- */
+function openModeCenter() {
+  const page = getPage();
+  const groups = ['All', ...new Set(MODES.map(m=>m.group))];
+  openModal({
+    title:'🧭 Mode Center — 30 Modes',
+    wide:true,
+    body:`
+      <div class="search-row">
+        <input id="mc-search" placeholder="🔍 Tìm mode..." oninput="renderModeGrid()">
+      </div>
+      <div class="filter-chips" id="mc-chips">
+        ${groups.map(g=>`<button class="chip ${g==='All'?'active':''}" onclick="setModeFilter('${g}')">${esc(g)}</button>`).join('')}
+      </div>
+      <div class="mode-grid" id="mode-grid"></div>
+    `,
+    footer:`<button class="btn ghost" onclick="applyModeLayout('m01');closeModal()">Reset Mode</button>`
+  });
+  renderModeGrid();
+}
+let mcFilter = 'All';
+function setModeFilter(g) {
+  mcFilter = g;
+  qsa('#mc-chips .chip').forEach(c=>c.classList.toggle('active', c.textContent===g));
+  renderModeGrid();
+}
+function renderModeGrid() {
+  const grid = qs('#mode-grid');
+  if(!grid) return;
+  const page = getPage();
+  const q = (qs('#mc-search')?.value || '').toLowerCase();
+  grid.innerHTML = '';
+  MODES.filter(m => {
+    if(mcFilter !== 'All' && m.group !== mcFilter) return false;
+    if(q && !m.name.toLowerCase().includes(q) && !m.desc.toLowerCase().includes(q)) return false;
+    return true;
+  }).forEach(m => {
+    const isActive = page.mode === m.id;
+    const card = document.createElement('div');
+    card.className = 'mode-card' + (isActive?' active':'');
+    card.innerHTML = `
+      <div class="mc-icon">${m.icon}</div>
+      <div class="mc-name">${esc(m.name)}</div>
+      <div class="mc-desc">${esc(m.desc)}</div>
+      <div class="mc-status">${isActive?'Active':'Apply'}</div>
+    `;
+    card.addEventListener('click', () => {
+      applyModeLayout(m.id);
+      closeModal();
+      toast(`✅ Đã chuyển sang mode: ${m.name}`);
+    });
+    grid.appendChild(card);
+  });
+}
+
+/* ---------- PAGE OPERATIONS ---------- */
+function switchPage(id){
+  if(state.activePageId===id) return;
+  state.activePageId = id;
+  save();
+  renderWorkspace();
+}
+function addPage(opts={}){
+  const themes = THEMES.map(t=>t.id);
+  const icons = ['🌸','💻','🎮','💖','🎨','📚','✨','🌙','🍓','🐱','🦋','🌈','☁️','⭐','🍰'];
+  const p = {
+    id: uid('p'),
+    name: opts.name || 'New Page',
+    icon: opts.icon || icons[Math.floor(Math.random()*icons.length)],
+    color: opts.color || '#ff7bb0',
+    theme: opts.theme || themes[Math.floor(Math.random()*themes.length)],
+    mode: 'm01',
+    windows: []
+  };
+  state.pages.push(p);
+  state.activePageId = p.id;
+  save();
+  renderWorkspace();
+  toast('✨ Đã tạo trang mới');
+}
+function renamePage(id){
+  const p = state.pages.find(x=>x.id===id);
+  if(!p) return;
+  openModal({
+    title:'✎ Đổi tên trang',
+    body: `
+      <div class="form-group"><label>Tên trang</label><input id="rp-name" value="${esc(p.name)}"></div>
+      <div class="form-group"><label>Icon</label><input id="rp-icon" value="${esc(p.icon)}" maxlength="4"></div>
+    `,
+    footer:`
+      <button class="btn ghost" onclick="closeModal()">Hủy</button>
+      <button class="btn primary" onclick="doRenamePage('${id}')">Lưu</button>
+    `
+  });
+}
+function doRenamePage(id){
+  const p = state.pages.find(x=>x.id===id);
+  if(!p) return;
+  p.name = qs('#rp-name').value.trim() || p.name;
+  p.icon = qs('#rp-icon').value.trim() || p.icon;
+  save(); closeModal(); renderWorkspace();
+}
+function duplicatePage(id){
+  const p = state.pages.find(x=>x.id===id);
+  if(!p) return;
+  const copy = JSON.parse(JSON.stringify(p));
+  copy.id = uid('p');
+  copy.name = p.name + ' (copy)';
+  copy.windows = copy.windows.map(w=>({...w, id: uid('w')}));
+  state.pages.push(copy);
+  state.activePageId = copy.id;
+  save(); renderWorkspace();
+  toast('⧉ Đã nhân bản trang');
+}
+function deletePage(id){
+  if(state.pages.length<=1){ toast('Không thể xóa trang cuối cùng','error'); return; }
+  const p = state.pages.find(x=>x.id===id);
+  if(!p) return;
+  openModal({
+    title:'⚠ Xóa trang',
+    body:`<p style="font-size:13px">Bạn có chắc muốn xóa trang <b>${esc(p.name)}</b>? Tất cả ${p.windows.length} cửa sổ sẽ bị xóa.</p>`,
+    footer:`
+      <button class="btn ghost" onclick="closeModal()">Hủy</button>
+      <button class="btn danger" onclick="doDeletePage('${id}')">Xóa</button>
+    `
+  });
+}
+function doDeletePage(id){
+  const idx = state.pages.findIndex(x=>x.id===id);
+  if(idx<0) return;
+  const p = state.pages[idx];
+  p.windows.forEach(w=>{
+    const el = windowEls.get(w.id);
+    if(el) el.remove();
+    windowEls.delete(w.id);
+  });
+  state.pages.splice(idx,1);
+  if(state.activePageId===id) state.activePageId = state.pages[0].id;
+  save(); closeModal(); renderWorkspace();
+}
+
+/* ---------- EDIT WINDOW URL ---------- */
+function editWindowUrl(winId){
+  const page = getPage();
+  const w = page.windows.find(x=>x.id===winId);
+  if(!w) return;
+  openModal({
+    title:'✎ Chỉnh sửa URL',
+    body:`
+      <div class="form-group"><label>Tên cửa sổ</label><input id="eu-name" value="${esc(w.name)}"></div>
+      <div class="form-group"><label>URL website</label><input id="eu-url" value="${esc(w.url)}" placeholder="https://..."></div>
+    `,
+    footer:`
+      <button class="btn ghost" onclick="closeModal()">Hủy</button>
+      <button class="btn primary" onclick="doEditWindowUrl('${winId}')">Lưu & Tải lại</button>
+    `
+  });
+}
+function doEditWindowUrl(winId){
+  const page = getPage();
+  const w = page.windows.find(x=>x.id===winId);
+  if(!w) return;
+  const u = normalizeUrl(qs('#eu-url').value);
+  if(!u){ toast('URL không hợp lệ hoặc bị chặn','error'); return; }
+  w.url = u;
+  w.name = qs('#eu-name').value.trim() || w.name;
+  save(); closeModal(); renderWorkspace(); reloadWindow(winId);
+}
+
+/* ---------- WINDOW SETTINGS ---------- */
+function openWindowSettings(winId){
+  const page = getPage();
+  const w = page.windows.find(x=>x.id===winId);
+  if(!w) return;
+  const ws = qs('#workspace');
+  openModal({
+    title:'⚙ Window Settings',
+    wide:true,
+    body:`
+      <div class="form-grid">
+        <div class="form-group"><label>Tên cửa sổ</label><input id="ws-name" value="${esc(w.name)}"></div>
+        <div class="form-group"><label>URL</label><input id="ws-url" value="${esc(w.url)}"></div>
+      </div>
+      <div class="form-group"><label>Khung</label>
+        <div style="display:flex;gap:6px">
+          <select id="ws-frame" style="flex:1">
+            ${FRAMES.map(f=>`<option value="${f.id}" ${f.id===w.frame?'selected':''}>${esc(f.name)} — ${esc(f.group)}</option>`).join('')}
+          </select>
+          <button class="btn sm" onclick="document.getElementById('ws-frame').value=randomFrameId()">🎲 Random</button>
+        </div>
+      </div>
+      <div class="form-group"><label>Kích thước nhanh</label>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <button class="btn sm" onclick="applySizePreset('${winId}','sm')">Small</button>
+          <button class="btn sm" onclick="applySizePreset('${winId}','md')">Medium</button>
+          <button class="btn sm" onclick="applySizePreset('${winId}','lg')">Large</button>
+          <button class="btn sm" onclick="applySizePreset('${winId}','xl')">XL</button>
+          <button class="btn sm" onclick="applySizePreset('${winId}','pct')">50% WS</button>
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Chiều rộng: <span class="range-val" id="ws-w-val">${Math.round(w.w)}px</span></label>
+          <div class="range-row">
+            <input type="range" id="ws-w" min="200" max="${Math.max(600, ws.clientWidth-40)}" value="${Math.round(w.w)}" oninput="document.getElementById('ws-w-val').textContent=this.value+'px'">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Chiều cao: <span class="range-val" id="ws-h-val">${Math.round(w.h)}px</span></label>
+          <div class="range-row">
+            <input type="range" id="ws-h" min="120" max="${Math.max(400, ws.clientHeight-40)}" value="${Math.round(w.h)}" oninput="document.getElementById('ws-h-val').textContent=this.value+'px'">
+          </div>
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>X</label>
+          <input type="number" id="ws-x" value="${Math.round(w.x)}">
+        </div>
+        <div class="form-group">
+          <label>Y</label>
+          <input type="number" id="ws-y" value="${Math.round(w.y)}">
+        </div>
+      </div>
+    `,
+    footer:`
+      <button class="btn ghost" onclick="closeModal()">Hủy</button>
+      <button class="btn danger" onclick="doDeleteWindow('${winId}')">Xóa cửa sổ</button>
+      <button class="btn primary" onclick="doApplyWindowSettings('${winId}')">Áp dụng</button>
+    `
+  });
+}
+function randomFrameId(){ return FRAMES[Math.floor(Math.random()*FRAMES.length)].id; }
+function applySizePreset(winId, preset){
+  const page = getPage();
+  const w = page.windows.find(x=>x.id===winId);
+  if(!w) return;
+  const ws = qs('#workspace');
+  const map = {sm:{w:320,h:240}, md:{w:500,h:380}, lg:{w:720,h:500}, xl:{w:900,h:600}, pct:{w:ws.clientWidth*0.5,h:ws.clientHeight*0.6}};
+  const s = map[preset];
+  if(!s) return;
+  const nx = qs('#ws-x'), ny = qs('#ws-y');
+  document.getElementById('ws-w').value = Math.round(s.w);
+  document.getElementById('ws-h').value = Math.round(s.h);
+  document.getElementById('ws-w-val').textContent = Math.round(s.w)+'px';
+  document.getElementById('ws-h-val').textContent = Math.round(s.h)+'px';
+}
+function doDeleteWindow(winId){
+  closeModal();
+  closeWindow(winId);
+}
+function doApplyWindowSettings(winId){
+  const page = getPage();
+  const w = page.windows.find(x=>x.id===winId);
+  if(!w) return;
+  w.name = qs('#ws-name').value.trim() || w.name;
+  const u = normalizeUrl(qs('#ws-url').value);
+  if(u) w.url = u;
+  w.frame = qs('#ws-frame').value;
+  w.x = parseInt(qs('#ws-x').value)||w.x;
+  w.y = parseInt(qs('#ws-y').value)||w.y;
+  w.w = parseInt(qs('#ws-w').value)||w.w;
+  w.h = parseInt(qs('#ws-h').value)||w.h;
+  save(); closeModal(); renderWorkspace();
+  reloadWindow(winId);
+}
+
+/* ---------- ADD WINDOW MODAL ---------- */
+function openAddWindow(){
+  const frame = pickRandomFrame(getPage());
+  openModal({
+    title:'➕ Add New Window',
+    body:`
+      <div class="form-group"><label>Tên cửa sổ</label><input id="aw-name" placeholder="Ví dụ: YouTube Music, Wikipedia..." value="New Window"></div>
+      <div class="form-group">
+        <label>URL website</label>
+        <div class="form-row">
+          <input id="aw-url" placeholder="https://..." value="https://vi.wikipedia.org" style="flex:1">
+          <button class="btn sm" onclick="pasteUrl()">📋 Dán</button>
+        </div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:6px">⚠ Một số website chặn nhúng iframe (Google, YouTube, Facebook...). Hãy dùng nút "Mở tab mới" nếu cần.</div>
+      </div>
+      <div class="form-group"><label>Khung cửa sổ</label>
+        <div style="display:flex;gap:6px">
+          <select id="aw-frame" style="flex:1">
+            ${FRAMES.map(f=>`<option value="${f.id}" ${f.id===frame?'selected':''}>${esc(f.name)} — ${esc(f.group)}</option>`).join('')}
+          </select>
+          <button class="btn sm" onclick="document.getElementById('aw-frame').value=randomFrameId()">🎲</button>
+        </div>
+      </div>
+      <div class="form-group"><label>Kích thước ban đầu</label>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <button class="btn sm" data-size="sm" onclick="document.getElementById('aw-size').value='sm'">Small</button>
+          <button class="btn sm" data-size="md" onclick="document.getElementById('aw-size').value='md'">Medium</button>
+          <button class="btn sm" data-size="lg" onclick="document.getElementById('aw-size').value='lg'">Large</button>
+        </div>
+        <input type="hidden" id="aw-size" value="md">
+      </div>
+    `,
+    footer:`
+      <button class="btn ghost" onclick="closeModal()">Hủy</button>
+      <button class="btn primary" onclick="doAddWindow()">✨ Create Window</button>
+    `
+  });
+}
+async function pasteUrl(){
+  try{
+    const t = await navigator.clipboard.readText();
+    if(t) qs('#aw-url').value = t;
+  }catch(e){ toast('Không thể dán — hãy nhấn Ctrl+V vào ô','error'); }
+}
+function doAddWindow(){
+  const name = qs('#aw-name').value.trim() || 'New Window';
+  const raw = qs('#aw-url').value.trim();
+  const u = normalizeUrl(raw);
+  if(!u){ toast('URL không hợp lệ','error'); return; }
+  const frame = qs('#aw-frame').value;
+  const size = qs('#aw-size').value;
+  const sizeMap = {sm:{w:320,h:240}, md:{w:520,h:400}, lg:{w:760,h:540}};
+  const s = sizeMap[size] || sizeMap.md;
+  closeModal();
+  addWindow({name, url:u, frame, w:s.w, h:s.h});
+}
+
+/* ---------- THEME GALLERY ---------- */
+function openThemeGallery(){
+  const page = getPage();
+  const html = `
+    <div class="search-row">
+      <input id="tg-search" placeholder="🔍 Tìm theme..." oninput="renderThemeGrid()">
+    </div>
+    <div class="gallery-grid theme-grid" id="theme-grid"></div>
+  `;
+  openModal({
+    title:'🎨 Theme Gallery — 20 themes',
+    wide:true,
+    body:html,
+    footer:`
+      <button class="btn ghost" onclick="closeModal()">Đóng</button>
+      <button class="btn" onclick="applyTheme('pink-mochi')">Reset về Pink Mochi</button>
+    `
+  });
+  renderThemeGrid();
+}
+function renderThemeGrid(){
+  const grid = qs('#theme-grid');
+  if(!grid) return;
+  const q = (qs('#tg-search')?.value || '').toLowerCase();
+  const page = getPage();
+  grid.innerHTML = '';
+  THEMES.filter(t=>!q || t.name.toLowerCase().includes(q) || t.id.includes(q)).forEach(t=>{
+    const card = document.createElement('div');
+    card.className = 'theme-card' + (t.id===page.theme?' active':'');
+    card.innerHTML = `
+      <div class="theme-preview" style="background:${t.bg}">
+        <div class="mini-win" style="--mini-title:${t.accent}"></div>
+      </div>
+      <div class="card-label">${t.emoji} ${esc(t.name)}</div>
+    `;
+    card.addEventListener('click', ()=>applyTheme(t.id));
+    grid.appendChild(card);
+  });
+}
+function applyTheme(id){
+  const page = getPage();
+  page.theme = id;
+  save();
+  document.body.dataset.theme = id;
+  renderPageHeader();
+  renderThemeGrid();
+  toast('🎨 Đã đổi theme: '+THEMES.find(t=>t.id===id).name);
+}
+
+/* ---------- FRAME GALLERY ---------- */
+function openFrameGallery(){
+  const groups = ['All', ...new Set(FRAMES.map(f=>f.group))];
+  const html = `
+    <div class="search-row">
+      <input id="fg-search" placeholder="🔍 Tìm khung..." oninput="fgState.search=this.value;fgState.page=1;renderFrameGrid()">
+      <button class="btn sm" onclick="randomAllFrames()">🎲 Random All</button>
+    </div>
+    <div class="filter-chips" id="fg-groups">
+      ${groups.map(g=>`<button class="chip ${g===fgState.filterGroup?'active':''}" onclick="setFrameGroup('${g}')">${esc(g)}</button>`).join('')}
+    </div>
+    <div class="filter-chips" id="fg-types">
+      <button class="chip ${fgState.filterType==='All'?'active':''}" onclick="setFrameType('All')">All Frames</button>
+      <button class="chip ${fgState.filterType==='Old'?'active':''}" onclick="setFrameType('Old')">Old (1-50)</button>
+      <button class="chip ${fgState.filterType==='New'?'active':''}" onclick="setFrameType('New')">New (51-100)</button>
+      <button class="chip ${fgState.filterType==='Fav'?'active':''}" onclick="setFrameType('Fav')">❤ Yêu thích</button>
+    </div>
+    <div class="gallery-grid frame-grid" id="frame-grid"></div>
+    <div class="pagination" id="fg-pagination"></div>
+  `;
+  openModal({
+    title:'🖼 Frame Gallery — 100 frames',
+    wide:true,
+    body:html,
+    footer:`
+      <button class="btn ghost" onclick="closeModal()">Đóng</button>
+      <button class="btn primary" onclick="applyFrameToSelected()">Áp dụng cho cửa sổ đã chọn</button>
+    `
+  });
+  renderFrameGrid();
+}
+
+function setFrameGroup(g) { fgState.filterGroup = g; fgState.page = 1; qsa('#fg-groups .chip').forEach(c=>c.classList.toggle('active', c.textContent===g)); renderFrameGrid(); }
+function setFrameType(t) { fgState.filterType = t; fgState.page = 1; qsa('#fg-types .chip').forEach(c=>c.classList.toggle('active', c.textContent.includes(t) || (t==='All'&&c.textContent==='All Frames'))); renderFrameGrid(); }
+
+function renderFrameGrid(){
+  const grid = qs('#frame-grid');
+  if(!grid) return;
+  const page = getPage();
+  const sel = selectedWindowId ? page.windows.find(x=>x.id===selectedWindowId) : null;
+  const currentFrame = sel ? sel.frame : null;
+  
+  let filtered = FRAMES.filter(f => {
+    if(fgState.filterGroup !== 'All' && f.group !== fgState.filterGroup) return false;
+    if(fgState.filterType === 'Old' && f.isNew) return false;
+    if(fgState.filterType === 'New' && !f.isNew) return false;
+    if(fgState.filterType === 'Fav' && !state.favorites.includes(f.id)) return false;
+    if(fgState.search && !f.name.toLowerCase().includes(fgState.search.toLowerCase()) && !f.group.toLowerCase().includes(fgState.search.toLowerCase())) return false;
+    return true;
+  });
+
+  const totalPages = Math.ceil(filtered.length / fgState.perPage) || 1;
+  if(fgState.page > totalPages) fgState.page = totalPages;
+  const start = (fgState.page - 1) * fgState.perPage;
+  const pageItems = filtered.slice(start, start + fgState.perPage);
+
+  grid.innerHTML = '';
+  pageItems.forEach(f => {
+    const isFav = state.favorites.includes(f.id);
+    const card = document.createElement('div');
+    card.className = 'frame-card' + (f.id===currentFrame?' active':'');
+    card.innerHTML = `
+      <button class="fav-btn ${isFav?'active':''}" onclick="event.stopPropagation();toggleFav('${f.id}')">${isFav?'❤':'🤍'}</button>
+      <div class="frame-preview">
+        <div class="mini-frame win" data-frame="${f.id}" style="--win-r:8px;--win-bg:#fff;--win-border:var(--accent);--win-title:var(--accent);--win-title-text:#fff">
+          <div class="win-inner" style="border-width:2px">
+            <div class="mf-tb"></div>
+            <div class="mf-body"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-label">${esc(f.name)}</div>
+    `;
+    card.addEventListener('click', ()=>{
+      if(selectedWindowId){ applyFrameToWindow(selectedWindowId, f.id); }
+      else { tempFrameSelection = f.id; toast('Chọn một cửa sổ trước để áp dụng khung'); }
+      qsa('#frame-grid .frame-card').forEach(c=>c.classList.remove('active'));
+      card.classList.add('active');
+    });
+    grid.appendChild(card);
+  });
+
+  // Pagination
+  const pag = qs('#fg-pagination');
+  if(pag) {
+    pag.innerHTML = `
+      <button ${fgState.page===1?'disabled':''} onclick="fgState.page--;renderFrameGrid()">← Prev</button>
+      <span>Trang ${fgState.page} / ${totalPages} (${filtered.length} khung)</span>
+      <button ${fgState.page===totalPages?'disabled':''} onclick="fgState.page++;renderFrameGrid()">Next →</button>
+    `;
+  }
+}
+function toggleFav(id) {
+  const idx = state.favorites.indexOf(id);
+  if(idx >= 0) state.favorites.splice(idx, 1);
+  else state.favorites.push(id);
+  save();
+  renderFrameGrid();
+}
+function applyFrameToSelected(){
+  if(!selectedWindowId){ toast('Hãy chọn một cửa sổ trước','error'); return; }
+  const active = qs('#frame-grid .frame-card.active');
+  if(!active) { toast('Hãy chọn một khung','error'); return; }
+  closeModal();
+  toast('✨ Đã áp dụng khung');
+}
+function applyFrameToWindow(winId, frameId){
+  const page = getPage();
+  const w = page.windows.find(x=>x.id===winId);
+  if(!w) return;
+  w.frame = frameId;
+  save();
+  const el = windowEls.get(winId);
+  if(el){
+    el.dataset.frame = frameId;
+    el.classList.add('new');
+    setTimeout(()=>el.classList.remove('new'), 400);
+  }
+  toast('🖼 '+FRAMES.find(f=>f.id===frameId).name);
+}
+
+/* ---------- WINDOW MANAGER ---------- */
+function openWindowManager(){
+  const page = getPage();
+  openModal({
+    title:'🗂 Window Manager',
+    wide:true,
+    body:`
+      <div class="search-row">
+        <input id="wm-search" placeholder="🔍 Tìm theo tên..." oninput="renderWindowManager()">
+        <button class="btn sm danger" onclick="closeSelectedWindows()">Đóng đã chọn</button>
+      </div>
+      <div class="wm-list" id="wm-list"></div>
+    `,
+    footer:`<button class="btn primary" onclick="closeModal()">Đóng</button>`
+  });
+  renderWindowManager();
+}
+function renderWindowManager(){
+  const list = qs('#wm-list');
+  if(!list) return;
+  const page = getPage();
+  const q = (qs('#wm-search')?.value||'').toLowerCase();
+  const filtered = page.windows.filter(w=>!q || w.name.toLowerCase().includes(q) || w.url.toLowerCase().includes(q));
+  if(filtered.length===0){
+    list.innerHTML = `<div style="padding:30px;text-align:center;color:var(--text-dim);font-size:12px">Không có cửa sổ nào</div>`;
+    return;
+  }
+  list.innerHTML = filtered.map(w=>`
+    <div class="wm-item">
+      <input type="checkbox" class="wm-check" data-id="${w.id}">
+      <div class="wm-info">
+        <div class="wm-name">${esc(w.name)}</div>
+        <div class="wm-url">${esc(w.url)}</div>
+      </div>
+      <div class="wm-meta">
+        <div>${Math.round(w.w)}×${Math.round(w.h)}</div>
+        <div>${esc(FRAMES.find(f=>f.id===w.frame)?.name || '?')}</div>
+      </div>
+      <div class="wm-actions">
+        <button title="Xem" onclick="focusWindowFromManager('${w.id}')">👁</button>
+        <button title="Cài đặt" onclick="openWindowSettings('${w.id}')">⚙</button>
+        <button title="Đóng" onclick="closeWindow('${w.id}');renderWindowManager()">✕</button>
+      </div>
+    </div>
+  `).join('');
+}
+function focusWindowFromManager(winId){
+  closeModal();
+  selectWindow(winId);
+  const el = windowEls.get(winId);
+  if(el){ el.scrollIntoView({block:'center',behavior:'smooth'}); el.classList.add('new'); setTimeout(()=>el.classList.remove('new'),400); }
+}
+function closeSelectedWindows(){
+  const checks = qsa('#wm-list .wm-check:checked');
+  if(checks.length===0){ toast('Chưa chọn cửa sổ nào','error'); return; }
+  openModal({
+    title:'⚠ Xác nhận đóng',
+    body:`<p style="font-size:13px">Bạn có chắc muốn đóng <b>${checks.length}</b> cửa sổ đã chọn?</p>`,
+    footer:`
+      <button class="btn ghost" onclick="closeModal();openWindowManager()">Hủy</button>
+      <button class="btn danger" onclick="confirmCloseSelected()">Đóng ${checks.length} cửa sổ</button>
+    `
+  });
+}
+function confirmCloseSelected(){
+  const checks = qsa('#wm-list .wm-check:checked');
+  const ids = checks.map(c=>c.dataset.id);
+  closeModal();
+  ids.forEach(id=>closeWindow(id));
+  toast(`Đã đóng ${ids.length} cửa sổ`);
+  setTimeout(openWindowManager, 300);
+}
+
+/* ---------- SETTINGS ---------- */
+function openSettings(){
+  const s = state.settings;
+  openModal({
+    title:'⚙ Settings',
+    body:`
+      <div class="form-group">
+        <label>Hiệu ứng nền & particles</label>
+        <div style="display:flex;gap:8px;align-items:center">
+          <input type="checkbox" id="st-fx" ${s.effects?'checked':''} style="width:auto">
+          <span style="font-size:12px">Bật hiệu ứng hạt sáng, bong bóng, animation</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Giảm chuyển động</label>
+        <div style="display:flex;gap:8px;align-items:center">
+          <input type="checkbox" id="st-rm" ${s.reduceMotion?'checked':''} style="width:auto">
+          <span style="font-size:12px">Tắt animation (dành cho thiết bị yếu)</span>
+        </div>
+      </div>
+      <hr style="border:none;border-top:1px solid rgba(0,0,0,.1);margin:16px 0">
+      <div class="form-group">
+        <label>Dữ liệu</label>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn sm" onclick="exportWorkspace()">📤 Export</button>
+          <button class="btn sm" onclick="document.getElementById('import-file').click()">📥 Import</button>
+          <button class="btn sm danger" onclick="resetWorkspace()">🔄 Reset</button>
+          <input type="file" id="import-file" accept="application/json,.json" style="display:none" onchange="doImport(event)">
+        </div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:8px">💡 Dữ liệu được lưu trong localStorage của trình duyệt. Không có thông tin đăng nhập được lưu.</div>
+      </div>
+      <hr style="border:none;border-top:1px solid rgba(0,0,0,.1);margin:16px 0">
+      <div style="font-size:11px;color:var(--text-dim);line-height:1.6">
+        <b>Mochi Space 5D</b> — Không gian làm việc anime kawaii với 20 theme, 100 khung và 30 mode.<br>
+        Lưu ý: Một số website (Google, YouTube, Facebook...) chặn nhúng iframe. Hãy dùng nút "Mở tab mới".
+      </div>
+    `,
+    footer:`<button class="btn primary" onclick="saveSettings()">Lưu</button>`
+  });
+}
+function saveSettings(){
+  state.settings.effects = qs('#st-fx').checked;
+  state.settings.reduceMotion = qs('#st-rm').checked;
+  document.body.classList.toggle('reduce-motion', state.settings.reduceMotion);
+  document.getElementById('particles').style.display = state.settings.effects && !state.settings.reduceMotion ? '' : 'none';
+  save(); closeModal();
+  toast('✅ Đã lưu cài đặt');
+}
+function toggleEffects(){
+  state.settings.effects = !state.settings.effects;
+  document.getElementById('particles').style.display = state.settings.effects && !state.settings.reduceMotion ? '' : 'none';
+  save();
+  toast(state.settings.effects ? '✨ Bật hiệu ứng' : 'Hiệu ứng đã tắt');
+}
+function exportWorkspace(){
+  const data = JSON.stringify(state, null, 2);
+  const blob = new Blob([data], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'mochi-space-5d-'+Date.now()+'.json';
+  a.click();
+  setTimeout(()=>URL.revokeObjectURL(url), 1000);
+  toast('📤 Đã export');
+}
+function doImport(ev){
+  const file = ev.target.files[0];
+  if(!file) return;
+  if(file.size > 5*1024*1024){ toast('File quá lớn (>5MB)','error'); return; }
+  const reader = new FileReader();
+  reader.onload = () => {
+    try{
+      const data = JSON.parse(reader.result);
+      if(!data || !Array.isArray(data.pages)) throw new Error('Invalid');
+      if(!data.pages.every(p=>p.id && Array.isArray(p.windows))) throw new Error('Invalid pages');
+      windowEls.forEach((el,id)=>{ el.remove(); });
+      windowEls.clear();
+      state = Object.assign({}, state, data);
+      if(!state.pages.length) throw new Error('No pages');
+      if(!state.pages.find(p=>p.id===state.activePageId)) state.activePageId = state.pages[0].id;
+      state.pages.forEach(p => {
+        if(!p.mode) p.mode = 'm01';
+        p.windows.forEach(w => {
+          if(!FRAMES.find(f=>f.id===w.frame)) w.frame = 'mochi';
+        });
+      });
+      save(); closeModal(); renderWorkspace();
+      toast('📥 Import thành công');
+    }catch(e){ toast('File không hợp lệ','error'); }
+  };
+  reader.readAsText(file);
+}
+function resetWorkspace(){
+  openModal({
+    title:'⚠ Reset Workspace',
+    body:`<p style="font-size:13px">Bạn có chắc muốn xóa toàn bộ dữ liệu và khôi phục về trạng thái ban đầu?</p>`,
+    footer:`
+      <button class="btn ghost" onclick="closeModal()">Hủy</button>
+      <button class="btn danger" onclick="doReset()">Reset</button>
+    `
+  });
+}
+function doReset(){
+  localStorage.removeItem(STORAGE_KEY);
+  windowEls.forEach(el=>el.remove());
+  windowEls.clear();
+  state = {
+    version:2,
+    activePageId:'p_home',
+    pages:JSON.parse(JSON.stringify(DEFAULT_PAGES)),
+    settings:{effects:true,reduceMotion:false},
+    favorites:[],
+    maxZ:10,maxPinZ:100000
+  };
+  closeModal();
+  renderWorkspace();
+  toast('🔄 Đã reset workspace');
+}
+
+/* ---------- MODALS ---------- */
+let modalStack = [];
+function openModal({title, body, footer, wide}){
+  const modals = qs('#modals');
+  const wrap = document.createElement('div');
+  wrap.className = 'modal-backdrop';
+  wrap.innerHTML = `
+    <div class="modal-box ${wide?'wide':''}">
+      <div class="modal-head">
+        <span class="m-icon">✨</span>
+        <h2>${esc(title)}</h2>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-body">${body}</div>
+      ${footer?`<div class="modal-foot">${footer}</div>`:''}
+    </div>
+  `;
+  wrap.addEventListener('click', e=>{ if(e.target===wrap) closeModal(); });
+  modals.appendChild(wrap);
+  modalStack.push(wrap);
+}
+function closeModal(){
+  const m = modalStack.pop();
+  if(m) m.remove();
+}
+
+/* ---------- COUNTS ---------- */
+function updateCounts(){
+  const p = getPage();
+  qs('#win-count-badge').textContent = p.windows.length;
+  qs('#cur-page-stat').textContent = `${p.windows.length} cửa sổ • ${p.windows.filter(w=>!w.minimized).length} đang hoạt động`;
+}
+
+/* ---------- RIGHT RAIL ---------- */
+function toggleRail(){
+  qs('#right-rail').classList.toggle('open');
+}
+
+/* ---------- PARTICLES ---------- */
+let particleCanvas, pctx, particles = [], pAnim;
+function initParticles(){
+  particleCanvas = qs('#particles');
+  pctx = particleCanvas.getContext('2d');
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+  for(let i=0;i<40;i++) particles.push(newParticle());
+  animateParticles();
+}
+function resizeCanvas(){
+  particleCanvas.width = window.innerWidth;
+  particleCanvas.height = window.innerHeight;
+}
+function newParticle(){
+  return {
+    x: Math.random()*window.innerWidth,
+    y: Math.random()*window.innerHeight,
+    r: 1+Math.random()*3,
+    vx: (Math.random()-.5)*.3,
+    vy: -0.2 - Math.random()*.4,
+    a: Math.random()*Math.PI*2,
+    hue: Math.random()*360,
+    life: 1
+  };
+}
+function animateParticles(){
+  pAnim = requestAnimationFrame(animateParticles);
+  if(!state.settings.effects || state.settings.reduceMotion) return;
+  pctx.clearRect(0,0,particleCanvas.width, particleCanvas.height);
+  for(const p of particles){
+    p.x += p.vx; p.y += p.vy; p.a += .01;
+    if(p.y < -10){ p.y = particleCanvas.height+10; p.x = Math.random()*particleCanvas.width; }
+    if(p.x < -10) p.x = particleCanvas.width+10;
+    if(p.x > particleCanvas.width+10) p.x = -10;
+    const alpha = .3 + Math.sin(p.a)*.3;
+    pctx.beginPath();
+    pctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+    pctx.fillStyle = `hsla(${p.hue},80%,70%,${alpha})`;
+    pctx.shadowColor = `hsla(${p.hue},80%,70%,.8)`;
+    pctx.shadowBlur = 8;
+    pctx.fill();
+  }
+}
+
+/* ---------- KEYBOARD SHORTCUTS ---------- */
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'Escape'){ closeModal(); }
+  if((e.ctrlKey||e.metaKey) && e.key==='n'){
+    e.preventDefault(); openAddWindow();
+  }
+});
+
+/* ---------- INIT ---------- */
+function init(){
+  load();
+  document.body.dataset.theme = (getPage().theme || 'pink-mochi');
+  document.body.classList.toggle('reduce-motion', state.settings.reduceMotion);
+  
+  // Fix: Bind New Page button
+  qs('#new-page-btn').addEventListener('click', () => addPage());
+  
+  renderWorkspace();
+  initParticles();
+  qs('#particles').style.display = state.settings.effects && !state.settings.reduceMotion ? '' : 'none';
+  if(!state.settings.effects) qs('#particles').style.display = 'none';
+  updateCounts();
+}
+init();
+
+/* expose functions to global */
+Object.assign(window, {
+  openAddWindow, doAddWindow, pasteUrl, randomFrameId,
+  openThemeGallery, renderThemeGrid, applyTheme,
+  openFrameGallery, renderFrameGrid, setFrameGroup, setFrameType, toggleFav, applyFrameToSelected,
+  openModeCenter, renderModeGrid, setModeFilter, applyModeLayout,
+  openWindowManager, renderWindowManager, focusWindowFromManager, closeSelectedWindows, confirmCloseSelected,
+  openSettings, saveSettings, exportWorkspace, doImport, resetWorkspace, doReset,
+  closeModal, toggleRail, toggleEffects,
+  randomAllFrames, arrangeWindows,
+  closeWindow, openWindowSettings,
+  doEditWindowUrl, doDeleteWindow, doApplyWindowSettings, applySizePreset,
+  doRenamePage, doDeletePage,
+  randomFrameWindow,
+  // Widgets
+  togglePomodoro, resetPomodoro, addTask, toggleTask, delTask
+});
+</script>
+</body>
+</html>
